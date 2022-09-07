@@ -1,37 +1,44 @@
 package com.example.amarokeclicker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
+import android.widget.Button
+import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var coinCounter = 0
-    private var nb1 = 1
-    private var coutnb1 = 10;
+    private var progressBarStatus = 0
+    private var dummy: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
+        // get the references from layout file
+        val btnStartProgress = this.findViewById<Button>(R.id.button_production1)
+        val progressBar = this.findViewById<ProgressBar>(R.id.progressBar_production1)
 
-    fun onScreenClick(v: View) {
-        coinCounter += nb1
-        this.findViewById<TextView>(R.id.coins).text = coinCounter.toString()
-    }
+        // when button is clicked, start the task
+        btnStartProgress.setOnClickListener { v ->
 
-    fun onClicknb1(v : View) {
-        if(coinCounter>coutnb1) {
-            coinCounter-=coutnb1
-            nb1++
-            this.findViewById<TextView>(R.id.coins).text = coinCounter.toString()
-            this.findViewById<TextView>(R.id.textView2).text = "cout :" + coutnb1.toString()
-            this.findViewById<TextView>(R.id.nbameliotext).text = "nb amelio : " + nb1.toString()
-            coutnb1+=10
+            // task is run on a thread
+            Thread {
+                // dummy thread mimicking some operation whose progress can be tracked
+                while (progressBarStatus < 100) {
+                    // performing some dummy operation
+                    try {
+                        dummy += 25
+                        Thread.sleep(1000)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+                    // tracking progress
+                    progressBarStatus = dummy
 
+                    // Updating the progress bar
+                    progressBar.progress = progressBarStatus
+                }
 
+            }.start()
         }
-
     }
 }
