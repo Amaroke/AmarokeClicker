@@ -3,12 +3,14 @@ package com.example.amarokeclicker
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
     private var progressBarStatus = 0
-    private var dummy: Int = 0
+    private var dummy = 0
+    private var coins = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         // get the references from layout file
         val btnStartProgress = this.findViewById<Button>(R.id.button_production1)
         val progressBar = this.findViewById<ProgressBar>(R.id.progressBar_production1)
+        val viewCoins = this.findViewById<TextView>(R.id.textView_coins)
+        viewCoins.text = coins.toString()
 
         // when button is clicked, start the task
         btnStartProgress.setOnClickListener { v ->
@@ -31,14 +35,22 @@ class MainActivity : AppCompatActivity() {
                     } catch (e: InterruptedException) {
                         e.printStackTrace()
                     }
+
                     // tracking progress
                     progressBarStatus = dummy
 
                     // Updating the progress bar
                     progressBar.progress = progressBarStatus
                 }
+                progressBar.progress=0
+                progressBarStatus = 0
+                dummy=0
+                coins+=1
+                viewCoins.text = coins.toString()
+
 
             }.start()
+
         }
     }
 }
