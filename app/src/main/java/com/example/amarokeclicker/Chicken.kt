@@ -1,6 +1,6 @@
 package com.example.amarokeclicker
 
-class Poulet : Production(10, 1, 5) {
+class Chicken : Production(10, 1, 5) {
 
 
 }

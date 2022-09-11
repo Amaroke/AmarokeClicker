@@ -13,9 +13,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var viewCoins: TextView
     private lateinit var production1: Button
+    private lateinit var buypoulet: Button
     private var progressBarStatus = 0
     private var coins = 0
-    private var poulet = Poulet()
+    private var chicken = Chicken()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         progressBar = this.findViewById(R.id.progressBar_production1)
         viewCoins = this.findViewById(R.id.textView_coins)
         production1 = this.findViewById(R.id.button_production1)
-        viewCoins.text = coins.toString()
+        buypoulet = this.findViewById(R.id.button_buy1)
+        refreshView()
     }
 
     fun onClickButton1(v: View) {
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
                 try {
                     progressBarStatus += 1
-                    Thread.sleep(poulet.actualProductionTime.toLong())
+                    Thread.sleep(chicken.actualProductionTime.toLong())
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
@@ -48,10 +50,24 @@ class MainActivity : AppCompatActivity() {
 
             progressBarStatus = 0
             progressBar.progress = progressBarStatus
-            coins += poulet.actualProduction
-            viewCoins.text = coins.toString()
+            coins += chicken.actualProduction
+            refreshView()
             production1.isClickable = true
 
         }.start()
+    }
+
+    fun onclickbuypoulet(v : View) {
+        if(coins>chicken.actualCost) {
+            coins-=chicken.actualCost
+            chicken.actualCost+=2
+            chicken.actualProduction+=1
+            refreshView()
+        }
+
+    }
+
+    fun refreshView() {
+        viewCoins.text = coins.toString()
     }
 }

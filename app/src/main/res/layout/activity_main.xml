@@ -97,6 +97,7 @@
                             android:id="@+id/button_buy1"
                             android:layout_width="50dp"
                             android:layout_height="45dp"
+                            android:onClick="onclickbuypoulet"
                             android:text="Buy1"
                             android:textSize="8sp" />
 
