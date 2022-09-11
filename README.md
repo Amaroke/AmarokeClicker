@@ -7,4 +7,4 @@ Je sais qu'un readme c'est pas fait pour ça mais je vais faire ma liste d'idée
 -Gacha
 -PUB
 -"Managers" (gacha ?)
--
+-FAIRE LE CALCUL DE CPS SUR 10SEC

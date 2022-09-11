@@ -58,10 +58,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onclickbuypoulet(v : View) {
-        if(coins>chicken.actualCost) {
+        if(coins>=chicken.actualCost) {
             coins-=chicken.actualCost
             chicken.actualCost+=2
             chicken.actualProduction+=1
+            chicken.numberPossessed+=1
             refreshView()
         }
 
@@ -69,5 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     fun refreshView() {
         viewCoins.text = coins.toString()
+        this.findViewById<TextView>(R.id.textView_cost1).text= "Coût :" + chicken.actualCost.toString()
+        this.findViewById<TextView>(R.id.textView_get1).text = "Possédé :" + chicken.numberPossessed.toString() + "\n(+ "+chicken.actualProduction+" coins à chaque production"
     }
 }

@@ -5,5 +5,6 @@ abstract class Production(initialCost: Int, initialProduction: Int, initialProdu
     var actualCost: Int = initialCost
     var actualProduction: Int = initialProduction
     var actualProductionTime: Int = initialProductionTime
+    var numberPossessed: Int = 0
 
 }
