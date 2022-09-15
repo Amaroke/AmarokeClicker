@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         this.supportActionBar?.hide()
         //On définit le contenu de la vue APRES les instructions précédentes pour éviter un crash
         this.setContentView(R.layout.activity_main)
-        progressBar = this.findViewById(R.id.progressBar_production1)
-        viewCoins = this.findViewById(R.id.textView_coins)
-        production1 = this.findViewById(R.id.button_production1)
-        buypoulet = this.findViewById(R.id.button_buy1)
-        refreshView()
+        //progressBar = this.findViewById(R.id.progressBar_production1)
+        //viewCoins = this.findViewById(R.id.textView_coins)
+        //production1 = this.findViewById(R.id.button_production1)
+        //buypoulet = this.findViewById(R.id.button_buy1)
+        //refreshView()
     }
-
+/*
     fun onClickButton1(v: View) {
         production1.isClickable = false
         Thread {
@@ -68,9 +68,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun refreshView() {
+    private fun refreshView() {
         viewCoins.text = coins.toString()
         this.findViewById<TextView>(R.id.textView_cost1).text= "Coût :" + chicken.actualCost.toString()
         this.findViewById<TextView>(R.id.textView_get1).text = "Possédé :" + chicken.numberPossessed.toString() + "\n(+ "+chicken.actualProduction+" coins à chaque production"
-    }
+    }*/
 }

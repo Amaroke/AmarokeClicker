@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Amaroke Clicker</string>
     <string name="coins">coins</string>
+    <string name="possesses">Possesses</string>
+    <string name="production">Production</string>
+    <string name="plus1">+1</string>
+    <string name="cost">Cost</string>
+    <string name="P">imageProduction</string>
+    <string name="imageProduction">imageProduction</string>
 </resources>

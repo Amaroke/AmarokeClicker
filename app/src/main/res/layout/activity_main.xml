@@ -1,126 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:ignore="UsingOnClickInXml"
-    android:theme="@style/Theme.AppCompat.NoActionBar">
+    android:layout_height="wrap_content">
+
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <LinearLayout
+        <include
+            layout="@layout/production"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent" />
 
-            <ImageView
-                android:id="@+id/imageView_coins"
-                android:layout_width="191dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="coins"
-                app:srcCompat="@drawable/golden_" />
-
-            <LinearLayout
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView_coins"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textColor="#FF0000"
-                    android:textSize="25sp" />
-
-                <TextView
-                    android:id="@+id/textView_cps"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="CPS : 0" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
+        <include
+            layout="@layout/production"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_production1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:onClick="onClickButton1"
-                    android:text="Production1" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar_production1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/button_buy1"
-                            android:layout_width="50dp"
-                            android:layout_height="45dp"
-                            android:onClick="onclickbuypoulet"
-                            android:text="Buy1"
-                            android:textSize="8sp" />
-
-                        <TextView
-                            android:id="@+id/textView_cost1"
-                            android:layout_width="0dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:text="  Coût : " />
-
-                        <TextView
-                            android:id="@+id/textView_get1"
-                            android:layout_width="0dp"
-                            android:layout_height="173dp"
-                            android:layout_weight="1"
-                            android:text="Possédé : " />
-
-
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
+        <include
+            layout="@layout/production"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

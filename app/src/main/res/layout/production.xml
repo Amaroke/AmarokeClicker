@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_weight="1"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/age_until_18_TV">
+
+            <ImageButton
+                android:id="@+id/imageButtonProduction"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:contentDescription="@string/imageProduction"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+
+            <TextView
+                android:id="@+id/textViewProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/imageButtonProduction"
+                android:layout_alignEnd="@id/imageButtonProduction"
+                android:layout_alignBottom="@id/imageButtonProduction"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="@string/possesses"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/age_until_18_TV">
+
+                <ProgressBar
+                    android:id="@+id/progressBarProduction"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:scaleY="5" />
+
+                <TextView
+                    android:id="@+id/textViewProduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/progressBarProduction"
+                    android:layout_alignTop="@id/progressBarProduction"
+                    android:layout_alignEnd="@id/progressBarProduction"
+                    android:layout_alignBottom="@id/progressBarProduction"
+                    android:gravity="center"
+                    android:paddingBottom="2dp"
+                    android:text="@string/production"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="225dp">
+
+                <Button
+                    android:id="@+id/buttonUpgradeProduction"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/plus1"
+                    android:textAlignment="center"
+                    android:textSize="11sp" />
+
+
+                <TextView
+                    android:id="@+id/textViewUpgradeCostProduction"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/cost"
+                    android:textAlignment="viewStart" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
