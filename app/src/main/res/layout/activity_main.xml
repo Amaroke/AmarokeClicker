@@ -37,51 +37,83 @@
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/cow"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/sheep"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/pig"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/rabbit"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/horse"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/caribou"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/fish"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/dog"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <include
+                    android:id="@+id/elephant"
+                    layout="@layout/production"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/bugs"
+                    layout="@layout/production"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/vegan"
+                    layout="@layout/production"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/cultured"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
         </ScrollView>
+        <include
+            android:id="@+id/footer"
+            layout="@layout/footer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
