@@ -6,12 +6,12 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_weight="1"
         android:layout_marginStart="18dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="18dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +102,10 @@
                     android:id="@+id/textViewUpgradeCostProduction"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="center|start"
+                    android:paddingStart="3dp"
                     android:text="@string/cost"
-                    android:textAlignment="viewStart" />
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
         </LinearLayout>

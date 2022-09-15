@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/golden_"
+                    android:contentDescription="@string/money" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewMoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="@string/money" />
+
+                    <TextView
+                        android:id="@+id/textViewMoneyPerSecond"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/mps" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonX1"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/x1" />
+
+                <Button
+                    android:id="@+id/buttonX10"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/x10" />
+
+                <Button
+                    android:id="@+id/buttonX25"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/x25" />
+
+                <Button
+                    android:id="@+id/buttonXMax"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/xMax" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@android:drawable/ic_menu_manage"
+            android:contentDescription="@string/settings" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

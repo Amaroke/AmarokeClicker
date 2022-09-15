@@ -7,4 +7,11 @@
     <string name="cost">Cost</string>
     <string name="P">imageProduction</string>
     <string name="imageProduction">imageProduction</string>
+    <string name="settings">Settings</string>
+    <string name="xMax">xMax</string>
+    <string name="x25">x25</string>
+    <string name="x10">x10</string>
+    <string name="x1">x1</string>
+    <string name="mps">MPS</string>
+    <string name="money">Money</string>
 </resources>
