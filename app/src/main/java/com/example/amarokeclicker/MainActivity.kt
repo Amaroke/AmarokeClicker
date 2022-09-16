@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     //Controllers
     private lateinit var controllerChicken: ControllerChicken
+    private lateinit var controllerHeader: ControllerHeader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.supportActionBar?.hide()
         this.setContentView(R.layout.activity_main)
+
+        jeu.addPropertyChangeListener {
+            controllerHeader.refresh()
+        }
 
         //On récupère les vues
         viewHeader = this.findViewById(R.id.header)
@@ -54,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         viewFooter = this.findViewById(R.id.footer)
 
         controllerChicken = ControllerChicken(jeu, viewChicken, Chicken())
+        controllerHeader = ControllerHeader(jeu, viewHeader)
     }
 
 }

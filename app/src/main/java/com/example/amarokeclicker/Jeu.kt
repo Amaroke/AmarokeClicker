@@ -1,7 +1,18 @@
 package com.example.amarokeclicker
 
-class Jeu {
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
-    var money = 0
+class Jeu : PropertyChangeAware() {
+
+    private val observer = {
+            property: KProperty<*>,
+            oldValue: Any,
+            newValue: Any -> propertyChangeSupport.firePropertyChange(property.name, oldValue, newValue)
+    }
+
+    var money: Int by Delegates.observable(0, observer)
+    var moneyPerSecond = 0
+    var fastUP = 1 // 1 = x1, 2 = x10, 3 = x25, 4 = xMax
 
 }
