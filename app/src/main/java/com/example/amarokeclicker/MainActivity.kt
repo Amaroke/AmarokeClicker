@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import com.example.amarokeclicker.production.controllers.ControllerProduction
+import com.example.amarokeclicker.production.models.Beef
+import com.example.amarokeclicker.production.models.Chicken
+import com.example.amarokeclicker.production.models.Mutton
+import com.example.amarokeclicker.production.models.Pork
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,9 +17,9 @@ class MainActivity : AppCompatActivity() {
     //Views
     private lateinit var viewHeader: View
     private lateinit var viewChicken: View
-    private lateinit var viewCow: View
-    private lateinit var viewSheep: View
-    private lateinit var viewPig: View
+    private lateinit var viewBeef: View
+    private lateinit var viewMutton: View
+    private lateinit var viewPork: View
     private lateinit var viewRabbit: View
     private lateinit var viewHorse: View
     private lateinit var viewCaribou: View
@@ -27,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewFooter: View
 
     //Controllers
-    private lateinit var controllerChicken: ControllerChicken
+    private lateinit var controllerProduction: ControllerProduction
     private lateinit var controllerHeader: ControllerHeader
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +49,9 @@ class MainActivity : AppCompatActivity() {
         //On récupère les vues
         viewHeader = this.findViewById(R.id.header)
         viewChicken = this.findViewById(R.id.chicken)
-        viewCow = this.findViewById(R.id.cow)
-        viewSheep = this.findViewById(R.id.sheep)
-        viewPig = this.findViewById(R.id.pig)
+        viewBeef = this.findViewById(R.id.beef)
+        viewMutton = this.findViewById(R.id.mutton)
+        viewPork = this.findViewById(R.id.pork)
         viewRabbit = this.findViewById(R.id.rabbit)
         viewHorse = this.findViewById(R.id.horse)
         viewCaribou = this.findViewById(R.id.caribou)
@@ -58,7 +63,10 @@ class MainActivity : AppCompatActivity() {
         viewCultured = this.findViewById(R.id.cultured)
         viewFooter = this.findViewById(R.id.footer)
 
-        controllerChicken = ControllerChicken(jeu, viewChicken, Chicken())
+        controllerProduction = ControllerProduction(jeu, viewChicken, Chicken())
+        controllerProduction = ControllerProduction(jeu, viewBeef, Beef())
+        controllerProduction = ControllerProduction(jeu, viewMutton, Mutton())
+        controllerProduction = ControllerProduction(jeu, viewPork, Pork())
         controllerHeader = ControllerHeader(jeu, viewHeader)
     }
 

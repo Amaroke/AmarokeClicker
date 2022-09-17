@@ -1,14 +1,17 @@
-package com.example.amarokeclicker
+package com.example.amarokeclicker.production.controllers
 
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.example.amarokeclicker.Jeu
+import com.example.amarokeclicker.R
+import com.example.amarokeclicker.production.models.Production
 
-class ControllerChicken(jeu: Jeu, viewChicken: View, private val chicken: Chicken) {
+class ControllerProduction(jeu: Jeu, viewChicken: View, private val production: Production) {
 
-    private var production: ImageButton = viewChicken.findViewById(R.id.imageButtonProduction)
+    private var startProduction: ImageButton = viewChicken.findViewById(R.id.imageButtonProduction)
     private var possesses: TextView = viewChicken.findViewById(R.id.textViewPossesses)
     private var progressBarProduction: ProgressBar =
         viewChicken.findViewById(R.id.progressBarProduction)
@@ -20,18 +23,18 @@ class ControllerChicken(jeu: Jeu, viewChicken: View, private val chicken: Chicke
     private var progressBarStatus = 0
 
     init {
-        production.setBackgroundResource(R.drawable.pataepollo)
+        startProduction.setBackgroundResource(production.image)
 
-        production.setOnClickListener {
+        startProduction.setOnClickListener {
 
-            production.isClickable = false
+            startProduction.isClickable = false
             Thread {
 
                 while (progressBarStatus < 100) {
 
                     try {
                         progressBarStatus += 1
-                        Thread.sleep(chicken.actualProductionTime.toLong())
+                        Thread.sleep(production.actualProductionTime.toLong())
                     } catch (e: InterruptedException) {
                         e.printStackTrace()
                     }
@@ -41,14 +44,14 @@ class ControllerChicken(jeu: Jeu, viewChicken: View, private val chicken: Chicke
 
                 progressBarStatus = 0
                 progressBarProduction.progress = progressBarStatus
-                jeu.money += chicken.actualProduction
-                production.isClickable = true
+                jeu.money += production.actualProduction
+                startProduction.isClickable = true
 
             }.start()
         }
 
         upgradeProduction.setOnClickListener {
-            chicken.upgradeProduction()
+            production.upgradeProduction()
             refresh()
         }
 
@@ -57,9 +60,9 @@ class ControllerChicken(jeu: Jeu, viewChicken: View, private val chicken: Chicke
     }
 
     private fun refresh() {
-        possesses.text = chicken.numberPossessed.toString()
-        textProduction.text = chicken.actualProduction.toString()
-        upgradeCostProduction.text = "Coût : " + chicken.actualCost.toString()
+        possesses.text = production.numberPossessed.toString()
+        textProduction.text = production.actualProduction.toString()
+        upgradeCostProduction.text = "Coût : " + production.actualCost.toString()
     }
 
 }
