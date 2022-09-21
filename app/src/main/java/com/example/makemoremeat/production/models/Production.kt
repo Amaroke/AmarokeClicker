@@ -1,6 +1,4 @@
-package com.example.amarokeclicker.production.models
-
-import android.graphics.drawable.Drawable
+package com.example.makemoremeat.production.models
 
 abstract class Production(initialCost: Int, initialProduction: Int, initialProductionTime: Int, val image: Int) {
     abstract fun upgradeProduction()

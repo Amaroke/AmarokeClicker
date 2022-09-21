@@ -1,8 +1,8 @@
-package com.example.amarokeclicker.production.models
+package com.example.makemoremeat.production.models
 
-import com.example.amarokeclicker.R
+import com.example.makemoremeat.R
 
-class Mutton : Production(50, 10, 20, R.drawable.mutton) {
+class Chicken : Production(10, 1, 5, R.drawable.chicken) {
 
     init {
         numberPossessed = 1

@@ -1,6 +1,6 @@
-package com.example.amarokeclicker.production.models
+package com.example.makemoremeat.production.models
 
-import com.example.amarokeclicker.R
+import com.example.makemoremeat.R
 
 class Beef : Production(20, 4, 10, R.drawable.beef) {
 

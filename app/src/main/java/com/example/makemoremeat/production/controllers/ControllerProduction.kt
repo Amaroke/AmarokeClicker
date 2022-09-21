@@ -1,13 +1,13 @@
-package com.example.amarokeclicker.production.controllers
+package com.example.makemoremeat.production.controllers
 
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.example.amarokeclicker.Jeu
-import com.example.amarokeclicker.R
-import com.example.amarokeclicker.production.models.Production
+import com.example.makemoremeat.Jeu
+import com.example.makemoremeat.R
+import com.example.makemoremeat.production.models.Production
 
 class ControllerProduction(jeu: Jeu, viewChicken: View, private val production: Production) {
 

@@ -1,4 +1,4 @@
-package com.example.amarokeclicker
+package com.example.makemoremeat
 
 import org.junit.Test
 

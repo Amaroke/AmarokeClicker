@@ -1,4 +1,4 @@
-package com.example.amarokeclicker
+package com.example.makemoremeat
 
 import android.view.View
 import android.widget.Button

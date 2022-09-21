@@ -1,4 +1,4 @@
-package com.example.amarokeclicker
+package com.example.makemoremeat
 
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty

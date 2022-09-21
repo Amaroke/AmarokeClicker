@@ -1,4 +1,4 @@
-package com.example.amarokeclicker
+package com.example.makemoremeat
 
 import java.beans.PropertyChangeListener
 import java.beans.PropertyChangeSupport

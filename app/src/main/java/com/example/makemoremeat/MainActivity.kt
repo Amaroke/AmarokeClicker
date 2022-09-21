@@ -1,14 +1,14 @@
-package com.example.amarokeclicker
+package com.example.makemoremeat
 
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.amarokeclicker.production.controllers.ControllerProduction
-import com.example.amarokeclicker.production.models.Beef
-import com.example.amarokeclicker.production.models.Chicken
-import com.example.amarokeclicker.production.models.Mutton
-import com.example.amarokeclicker.production.models.Pork
+import com.example.makemoremeat.production.controllers.ControllerProduction
+import com.example.makemoremeat.production.models.Beef
+import com.example.makemoremeat.production.models.Chicken
+import com.example.makemoremeat.production.models.Mutton
+import com.example.makemoremeat.production.models.Pork
 
 class MainActivity : AppCompatActivity() {
 
