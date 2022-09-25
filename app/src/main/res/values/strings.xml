@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Amaroke Clicker</string>
+    <string name="app_name">Make More Meat</string>
     <string name="coins">coins</string>
     <string name="possesses">Possesses</string>
     <string name="production">Production</string>
@@ -14,4 +14,5 @@
     <string name="x1">x1</string>
     <string name="mps">MPS</string>
     <string name="money">Money</string>
+    <string name="costValue">Cost : %1d</string>
 </resources>

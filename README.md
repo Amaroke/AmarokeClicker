@@ -1,4 +1,4 @@
-# Amaroke Clicker
+# Make More Meat
 ---------
 
 This is a personal project of an incremental game, in Kotlin, entirely created from scratch.
@@ -8,7 +8,7 @@ This is a personal project of an incremental game, in Kotlin, entirely created f
 
 The list of things I would like to experience through this project (non-exhaustive list and subject to change) :
 
-* Put all the code in English
+* Change math displays
 * Daily Login Bonus
 * Remove the bar from the top of the screen
 * Allow to turn the screen upside down

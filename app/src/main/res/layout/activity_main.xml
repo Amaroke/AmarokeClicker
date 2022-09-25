@@ -26,6 +26,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/productionsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -97,7 +98,7 @@
                     android:layout_height="match_parent" />
 
                 <include
-                    android:id="@+id/vegan"
+                    android:id="@+id/vegans"
                     layout="@layout/production"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

@@ -1,5 +1,6 @@
-package com.example.makemoremeat.production.controllers
+package com.example.makemoremeat.production
 
+import android.content.Context
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -7,9 +8,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.makemoremeat.Jeu
 import com.example.makemoremeat.R
-import com.example.makemoremeat.production.models.Production
 
-class ControllerProduction(jeu: Jeu, viewChicken: View, private val production: Production) {
+class ControllerProduction(private val context: Context, jeu: Jeu, viewChicken: View, private val production: ModelProduction) {
 
     private var startProduction: ImageButton = viewChicken.findViewById(R.id.imageButtonProduction)
     private var possesses: TextView = viewChicken.findViewById(R.id.textViewPossesses)
@@ -62,7 +62,7 @@ class ControllerProduction(jeu: Jeu, viewChicken: View, private val production: 
     private fun refresh() {
         possesses.text = production.numberPossessed.toString()
         textProduction.text = production.actualProduction.toString()
-        upgradeCostProduction.text = "Coût : " + production.actualCost.toString()
+        upgradeCostProduction.text = context.getString(R.string.costValue, production.actualCost)
     }
 
 }
