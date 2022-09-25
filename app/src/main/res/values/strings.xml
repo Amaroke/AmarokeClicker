@@ -15,4 +15,6 @@
     <string name="mps">MPS</string>
     <string name="money">Money</string>
     <string name="costValue">Cost : %1d</string>
+    <string name="time">%02d:%02d:%02d</string>
+    <string name="timeNoHours">%02d:%02d</string>
 </resources>

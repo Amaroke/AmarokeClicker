@@ -9,24 +9,30 @@ import android.widget.TextView
 import com.example.makemoremeat.Jeu
 import com.example.makemoremeat.R
 
-class ControllerProduction(private val context: Context, jeu: Jeu, viewChicken: View, private val production: ModelProduction) {
+class ControllerProduction(
+    private val context: Context,
+    jeu: Jeu,
+    view: View,
+    private val production: ModelProduction
+) {
 
-    private var startProduction: ImageButton = viewChicken.findViewById(R.id.imageButtonProduction)
-    private var possesses: TextView = viewChicken.findViewById(R.id.textViewPossesses)
+    private var startProduction: ImageButton = view.findViewById(R.id.imageButtonProduction)
+    private var possesses: TextView = view.findViewById(R.id.textViewPossesses)
     private var progressBarProduction: ProgressBar =
-        viewChicken.findViewById(R.id.progressBarProduction)
-    private var textProduction: TextView = viewChicken.findViewById(R.id.textViewProduction)
-    private var upgradeProduction: Button = viewChicken.findViewById(R.id.buttonUpgradeProduction)
+        view.findViewById(R.id.progressBarProduction)
+    private var textProduction: TextView = view.findViewById(R.id.textViewProduction)
+    private var upgradeProduction: Button = view.findViewById(R.id.buttonUpgradeProduction)
     private var upgradeCostProduction: TextView =
-        viewChicken.findViewById(R.id.textViewUpgradeCostProduction)
-
+        view.findViewById(R.id.textViewUpgradeCostProduction)
+    private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
     private var progressBarStatus = 0
+    private var timeStop: Long = 0
 
     init {
         startProduction.setBackgroundResource(production.image)
 
         startProduction.setOnClickListener {
-
+            timeStop = System.currentTimeMillis() + production.actualProductionTime * 100
             startProduction.isClickable = false
             Thread {
 
@@ -63,6 +69,15 @@ class ControllerProduction(private val context: Context, jeu: Jeu, viewChicken: 
         possesses.text = production.numberPossessed.toString()
         textProduction.text = production.actualProduction.toString()
         upgradeCostProduction.text = context.getString(R.string.costValue, production.actualCost)
+
+        val milliseconds = timeStop - System.currentTimeMillis()
+        val hours = milliseconds / 1000 / 3600
+        val minutes = milliseconds / 1000 / 60 % 60
+        val seconds = milliseconds / 1000 % 60
+        if (hours > 0)
+            timeLeftProduction.text = context.getString(R.string.time, hours, minutes, seconds)
+        else
+            timeLeftProduction.text = context.getString(R.string.timeNoHours, minutes, seconds)
     }
 
 }

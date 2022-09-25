@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
                 value,
                 ModelProduction(
                     if (index == 0) 1 else 0,
-                    10.0.pow((index+1).toDouble()).toLong(),
+                    10.0.pow((index + 1).toDouble()).toLong(),
                     (1..index).fold(1, Int::times).toLong(),
-                    (1..index).fold(1, Int::times),
+                    3.0.pow((if (index < 3) index else index - 1).toDouble()).toInt(),
                     imgArray[index]
                 )
             )

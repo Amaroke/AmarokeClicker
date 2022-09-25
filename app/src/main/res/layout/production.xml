@@ -107,6 +107,14 @@
                     android:text="@string/cost"
                     tools:ignore="RtlSymmetry" />
 
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/time"
+                    android:textAlignment="textEnd" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
