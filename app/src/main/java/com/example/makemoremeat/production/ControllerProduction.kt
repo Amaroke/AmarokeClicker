@@ -126,13 +126,15 @@ class ControllerProduction(
         upgradeProduction.isEnabled = true
     }
 
-    private fun setButtonOff(){
+    private fun setButtonOff() {
         upgradeProduction.isClickable = false
         upgradeProduction.isEnabled = false
     }
 
     private fun upgradeProduction() {
-        production.upgradeProduction()
+        if (jeu.money >= production.actualCost) {
+            production.upgradeProduction()
+        }
         refresh()
     }
 

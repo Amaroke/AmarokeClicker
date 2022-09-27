@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import com.example.makemoremeat.production.ControllerProduction
 import com.example.makemoremeat.production.ModelProduction
-import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,10 +56,10 @@ class MainActivity : AppCompatActivity() {
                 value,
                 ModelProduction(
                     if (index == 0) 1 else 0,
-                    10.0.pow((index + 1).toDouble()).toLong(),
-                    (1..index).fold(1, Int::times).toLong(),
-                    3.0.pow((if (index < 3) index else index - 1).toDouble()).toInt(),
-                    imgArray[index]
+                    (index + 1).toLong(),
+                    (index + 1).toLong(),
+                    (index + 1),
+                    imgArray[index], jeu
                 )
             )
         }
