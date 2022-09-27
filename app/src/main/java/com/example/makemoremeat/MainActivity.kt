@@ -1,8 +1,11 @@
 package com.example.makemoremeat
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
@@ -24,10 +27,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Removing the title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.supportActionBar?.hide()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
         this.setContentView(R.layout.activity_main)
+
 
         viewHeader = this.findViewById(R.id.header)
         controllerHeader = ControllerHeader(jeu, viewHeader)
@@ -58,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     if (index == 0) 1 else 0,
                     (index + 1).toLong(),
                     (index + 1).toLong(),
-                    (index + 1),
+                    index + 1,
                     imgArray[index], jeu
                 )
             )
