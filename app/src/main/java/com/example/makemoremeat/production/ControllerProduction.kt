@@ -1,6 +1,6 @@
 package com.example.makemoremeat.production
 
-import android.content.Context
+import android.app.Activity
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
@@ -12,7 +12,7 @@ import com.example.makemoremeat.Jeu
 import com.example.makemoremeat.R
 
 class ControllerProduction(
-    private val context: Context,
+    private val context: Activity,
     private val jeu: Jeu,
     view: View,
     private val production: ModelProduction
@@ -44,10 +44,20 @@ class ControllerProduction(
         refresh()
     }
 
-    private fun refresh() {
-        possesses.text = production.numberPossessed.toString()
-        textProduction.text = production.actualProduction.toString()
-        upgradeCostProduction.text = context.getString(R.string.costValue, production.actualCost)
+
+    fun refresh() {
+        context.runOnUiThread {
+            possesses.text = production.numberPossessed.toString()
+            textProduction.text = production.actualProduction.toString()
+            upgradeCostProduction.text =
+                context.getString(R.string.costValue, production.actualCost)
+            if (production.actualCost > jeu.money) {
+                setButtonOff()
+            } else {
+                setButtonOn()
+            }
+        }
+
     }
 
     private fun startProduction() {
@@ -109,6 +119,16 @@ class ControllerProduction(
 
     private fun setTimerOff() {
         timeLeftProduction.setTextColor(ContextCompat.getColor(context, R.color.whiteOFF))
+    }
+
+    private fun setButtonOn() {
+        upgradeProduction.isClickable = true
+        upgradeProduction.isEnabled = true
+    }
+
+    private fun setButtonOff(){
+        upgradeProduction.isClickable = false
+        upgradeProduction.isEnabled = false
     }
 
     private fun upgradeProduction() {

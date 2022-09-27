@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     //Controllers
     private lateinit var controllerHeader: ControllerHeader
+    private var controllersProduction: MutableList<ControllerProduction> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +29,6 @@ class MainActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.supportActionBar?.hide()
         this.setContentView(R.layout.activity_main)
-
-        jeu.addPropertyChangeListener {
-            controllerHeader.refresh()
-        }
 
         viewHeader = this.findViewById(R.id.header)
         controllerHeader = ControllerHeader(jeu, viewHeader)
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         for ((index, value) in viewsProduction.withIndex()) {
-            ControllerProduction(
+            controllersProduction += ControllerProduction(
                 this,
                 jeu,
                 value,
@@ -69,6 +66,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewFooter = this.findViewById(R.id.footer)
+
+        jeu.addPropertyChangeListener {
+            controllerHeader.refresh()
+            for (controller in controllersProduction) {
+                controller.refresh()
+            }
+        }
     }
 
 
