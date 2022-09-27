@@ -27,6 +27,7 @@ class ControllerProduction(
     private var upgradeCostProduction: TextView =
         view.findViewById(R.id.textViewUpgradeCostProduction)
     private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
+    private var productionOn: Boolean = false
 
     init {
         startProduction.setBackgroundResource(production.image)
@@ -44,7 +45,6 @@ class ControllerProduction(
         refresh()
     }
 
-
     fun refresh() {
         context.runOnUiThread {
             possesses.text = production.numberPossessed.toString()
@@ -52,38 +52,43 @@ class ControllerProduction(
             upgradeCostProduction.text =
                 context.getString(R.string.costValue, production.actualCost)
             if (production.actualCost > jeu.money) {
-                setButtonOff()
+                setButtonUpOff()
             } else {
-                setButtonOn()
+                setButtonUpOn()
+            }
+            if (production.numberPossessed > 0 && !productionOn) {
+                setButtonStartProductionOn()
+            } else {
+                setButtonStartProductionOff()
             }
         }
-
     }
 
     private fun startProduction() {
-        var progressBarStatus = 0
-        startProduction.isClickable = false
-        startTimerProduction()
-        Thread {
+        if (production.numberPossessed > 0 && !productionOn) {
+            var progressBarStatus = 0
+            productionOn = true
+            startTimerProduction()
+            Thread {
 
-            while (progressBarStatus < 100) {
+                while (progressBarStatus < 100) {
 
-                try {
-                    progressBarStatus += 1
-                    Thread.sleep(production.actualProductionTime.toLong())
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
+                    try {
+                        progressBarStatus += 1
+                        Thread.sleep(production.actualProductionTime.toLong())
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+                    progressBarProduction.progress = progressBarStatus
+
                 }
+
+                progressBarStatus = 0
                 progressBarProduction.progress = progressBarStatus
-
-            }
-
-            progressBarStatus = 0
-            progressBarProduction.progress = progressBarStatus
-            jeu.money += production.actualProduction
-            startProduction.isClickable = true
-
-        }.start()
+                jeu.money += production.actualProduction
+                productionOn = false
+            }.start()
+        }
     }
 
     private fun startTimerProduction() {
@@ -121,14 +126,24 @@ class ControllerProduction(
         timeLeftProduction.setTextColor(ContextCompat.getColor(context, R.color.whiteOFF))
     }
 
-    private fun setButtonOn() {
+    private fun setButtonUpOn() {
         upgradeProduction.isClickable = true
         upgradeProduction.isEnabled = true
     }
 
-    private fun setButtonOff() {
+    private fun setButtonUpOff() {
         upgradeProduction.isClickable = false
         upgradeProduction.isEnabled = false
+    }
+
+    private fun setButtonStartProductionOn() {
+        startProduction.isClickable = true
+        startProduction.isEnabled = true
+    }
+
+    private fun setButtonStartProductionOff() {
+        startProduction.isClickable = false
+        startProduction.isEnabled = false
     }
 
     private fun upgradeProduction() {
