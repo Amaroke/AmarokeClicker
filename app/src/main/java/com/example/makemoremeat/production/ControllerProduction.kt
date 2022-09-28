@@ -30,7 +30,8 @@ class ControllerProduction(
     private var productionOn: Boolean = false
 
     init {
-        startProduction.setBackgroundResource(production.image)
+        setBackgroundImage()
+
         timeLeftProduction.text = context.getString(R.string.timeNoHours, 0, 0)
         setTimerOff()
 
@@ -61,6 +62,15 @@ class ControllerProduction(
             } else {
                 setButtonStartProductionOff()
             }
+            setBackgroundImage()
+        }
+    }
+
+    private fun setBackgroundImage() {
+        if(production.numberPossessed > 0) {
+            startProduction.setBackgroundResource(production.image)
+        } else {
+            startProduction.setBackgroundResource(R.drawable.production_unknow)
         }
     }
 
