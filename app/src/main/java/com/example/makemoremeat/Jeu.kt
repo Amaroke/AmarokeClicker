@@ -15,4 +15,8 @@ class Jeu : PropertyChangeAware() {
     var moneyPerSecond = 0
     var fastUP = 1 // 1 = x1, 2 = x10, 3 = x25, 4 = xMax
 
+    fun hardReset() {
+        money = 0
+    }
+
 }

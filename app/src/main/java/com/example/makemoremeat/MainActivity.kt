@@ -1,5 +1,6 @@
 package com.example.makemoremeat
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -83,7 +84,12 @@ class MainActivity : AppCompatActivity() {
             for (controller in controllersProduction) {
                 controller.refresh()
             }
+            val sharedPreferences = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
+            // Enregistrer les donnés
+            sharedPreferences.edit().putLong("money", jeu.money).apply()
         }
+
+        jeu.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong("money",0)
     }
 
 
