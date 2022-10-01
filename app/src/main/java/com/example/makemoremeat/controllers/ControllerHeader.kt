@@ -11,7 +11,7 @@ import com.example.makemoremeat.R
 class ControllerHeader(private val game: Game, private val viewHeader: View) {
 
     private var money: TextView = viewHeader.findViewById(R.id.textViewMoney)
-    private var moneyPerSeconde: TextView = viewHeader.findViewById(R.id.textViewMoneyPerSecond)
+    private var moneyPerSecond: TextView = viewHeader.findViewById(R.id.textViewMoneyPerSecond)
     private var buttonX1: Button = viewHeader.findViewById(R.id.buttonX1)
     private var buttonX10: Button = viewHeader.findViewById(R.id.buttonX10)
     private var buttonX25: Button = viewHeader.findViewById(R.id.buttonX25)
@@ -42,7 +42,7 @@ class ControllerHeader(private val game: Game, private val viewHeader: View) {
 
     fun refresh() {
         money.text = game.money.toString()
-        moneyPerSeconde.text = game.moneyPerSecond.toString()
+        moneyPerSecond.text = game.moneyPerSecond.toString()
         when (game.fastUP) {
             2 -> {
                 buttonX1.isClickable = true

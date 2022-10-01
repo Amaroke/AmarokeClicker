@@ -6,7 +6,6 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -41,79 +40,66 @@
                     android:orientation="vertical">
 
                     <include
-                        android:id="@+id/chicken"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/beef"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/mutton"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/pork"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/rabbit"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/horse"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/caribou"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/fish"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/dog"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/elephant"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/bugs"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/vegans"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
                     <include
-                        android:id="@+id/cultured"
                         layout="@layout/production"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />

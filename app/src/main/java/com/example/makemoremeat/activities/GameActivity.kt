@@ -91,7 +91,6 @@ class GameActivity : AppCompatActivity() {
                 controller.refresh()
             }
             val sharedPreferences = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
-            // Enregistrer les donnés
             sharedPreferences.edit().putLong("money", game.money).apply()
         }
 
