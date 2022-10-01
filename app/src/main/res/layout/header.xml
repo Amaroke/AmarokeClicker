@@ -26,10 +26,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/golden_"
-                    android:contentDescription="@string/money" />
+                    app:srcCompat="@drawable/money"
+                    android:contentDescription="@string/money"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -1,14 +1,12 @@
-package com.example.makemoremeat.production
+package com.example.makemoremeat.models
 
-import com.example.makemoremeat.Jeu
-
-class ModelProduction(
+class Production(
     initialNumber: Int,
     initialCost: Long,
     initialProduction: Long,
     initialProductionTime: Int,
     val image: Int,
-    private val jeu: Jeu
+    private val game: Game
 ) {
 
     var actualCost = initialCost
@@ -17,12 +15,12 @@ class ModelProduction(
     var numberPossessed = initialNumber
 
     fun upgradeProduction() {
+        game.money -= actualCost
         numberPossessed++
         actualProduction++
         actualCost++
         if (numberPossessed % 10 == 0) {
             actualProductionTime /= 2
         }
-        jeu.money -= actualCost
     }
 }

@@ -1,12 +1,14 @@
-package com.example.makemoremeat
+package com.example.makemoremeat.controllers
 
 import android.app.AlertDialog
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.makemoremeat.models.Game
+import com.example.makemoremeat.R
 
-class ControllerHeader(private val jeu: Jeu, private val viewHeader: View) {
+class ControllerHeader(private val game: Game, private val viewHeader: View) {
 
     private var money: TextView = viewHeader.findViewById(R.id.textViewMoney)
     private var moneyPerSeconde: TextView = viewHeader.findViewById(R.id.textViewMoneyPerSecond)
@@ -28,7 +30,7 @@ class ControllerHeader(private val jeu: Jeu, private val viewHeader: View) {
             .setCancelable(false)
             .setPositiveButton("Yes") { _, _ ->
                 // Delete selected note from database
-                jeu.hardReset()
+                game.hardReset()
             }
             .setNegativeButton("No") { dialog, _ ->
                 // Dismiss the dialog
@@ -39,9 +41,9 @@ class ControllerHeader(private val jeu: Jeu, private val viewHeader: View) {
     }
 
     fun refresh() {
-        money.text = jeu.money.toString()
-        moneyPerSeconde.text = jeu.moneyPerSecond.toString()
-        when (jeu.fastUP) {
+        money.text = game.money.toString()
+        moneyPerSeconde.text = game.moneyPerSecond.toString()
+        when (game.fastUP) {
             2 -> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = false

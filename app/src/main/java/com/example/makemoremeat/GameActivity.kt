@@ -10,12 +10,15 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
-import com.example.makemoremeat.production.ControllerProduction
-import com.example.makemoremeat.production.ModelProduction
+import com.example.makemoremeat.controllers.ControllerFooter
+import com.example.makemoremeat.controllers.ControllerHeader
+import com.example.makemoremeat.controllers.ControllerProduction
+import com.example.makemoremeat.models.Game
+import com.example.makemoremeat.models.Production
 
-class MainActivity : AppCompatActivity() {
+class GameActivity : AppCompatActivity() {
 
-    private var jeu = Jeu()
+    private var game = Game()
 
     //Views
     private lateinit var viewHeader: View
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     //Controllers
     private lateinit var controllerHeader: ControllerHeader
     private var controllersProduction: MutableList<ControllerProduction> = mutableListOf()
+    private lateinit var controllerFooter: ControllerFooter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
         viewHeader = this.findViewById(R.id.header)
-        controllerHeader = ControllerHeader(jeu, viewHeader)
+        controllerHeader = ControllerHeader(game, viewHeader)
 
         viewsProduction = this.findViewById<LinearLayout>(R.id.productionsList).children
         val imgArray = intArrayOf(
@@ -65,31 +69,32 @@ class MainActivity : AppCompatActivity() {
         for ((index, value) in viewsProduction.withIndex()) {
             controllersProduction += ControllerProduction(
                 this,
-                jeu,
+                game,
                 value,
-                ModelProduction(
+                Production(
                     if (index == 0) 1 else 0,
                     (index + 1).toLong(),
                     (index + 1).toLong(),
                     index + 1,
-                    imgArray[index], jeu
+                    imgArray[index], game
                 )
             )
         }
 
         viewFooter = this.findViewById(R.id.footer)
+        controllerFooter = ControllerFooter(this, game, viewFooter)
 
-        jeu.addPropertyChangeListener {
+        game.addPropertyChangeListener {
             controllerHeader.refresh()
             for (controller in controllersProduction) {
                 controller.refresh()
             }
             val sharedPreferences = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
             // Enregistrer les donnés
-            sharedPreferences.edit().putLong("money", jeu.money).apply()
+            sharedPreferences.edit().putLong("money", game.money).apply()
         }
 
-        jeu.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong("money",0)
+        game.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong("money",0)
     }
 
 

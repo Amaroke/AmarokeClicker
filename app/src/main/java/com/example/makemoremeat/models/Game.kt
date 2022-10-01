@@ -1,9 +1,10 @@
-package com.example.makemoremeat
+package com.example.makemoremeat.models
 
+import com.example.makemoremeat.PropertyChangeAware
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
-class Jeu : PropertyChangeAware() {
+class Game : PropertyChangeAware() {
 
     private val observer = {
             property: KProperty<*>,

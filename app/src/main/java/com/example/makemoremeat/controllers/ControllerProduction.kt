@@ -1,4 +1,4 @@
-package com.example.makemoremeat.production
+package com.example.makemoremeat.controllers
 
 import android.app.Activity
 import android.os.CountDownTimer
@@ -8,14 +8,15 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.makemoremeat.Jeu
+import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.R
+import com.example.makemoremeat.models.Production
 
 class ControllerProduction(
     private val context: Activity,
-    private val jeu: Jeu,
+    private val game: Game,
     view: View,
-    private val production: ModelProduction
+    private val production: Production
 ) {
 
     private var startProduction: ImageButton = view.findViewById(R.id.imageButtonProduction)
@@ -52,7 +53,7 @@ class ControllerProduction(
             textProduction.text = production.actualProduction.toString()
             upgradeCostProduction.text =
                 context.getString(R.string.costValue, production.actualCost)
-            if (production.actualCost > jeu.money) {
+            if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
                 setButtonUpOn()
@@ -95,7 +96,7 @@ class ControllerProduction(
 
                 progressBarStatus = 0
                 progressBarProduction.progress = progressBarStatus
-                jeu.money += production.actualProduction
+                game.money += production.actualProduction
                 productionOn = false
             }.start()
         }
@@ -157,7 +158,7 @@ class ControllerProduction(
     }
 
     private fun upgradeProduction() {
-        if (jeu.money >= production.actualCost) {
+        if (game.money >= production.actualCost) {
             production.upgradeProduction()
         }
         refresh()

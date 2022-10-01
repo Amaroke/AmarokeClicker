@@ -17,4 +17,9 @@
     <string name="costValue">Cost : %1d</string>
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
+    <string name="menu_de_selection">Menu de selection</string>
+    <string-array name="menuSpinner">
+        <item>Butchers</item>
+        <item>Upgrades</item>
+    </string-array>
 </resources>

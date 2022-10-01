@@ -43,6 +43,7 @@
                 android:paddingBottom="2dp"
                 android:text="@string/possesses"
                 android:textAlignment="center"
+                android:textColor="#455A64"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -78,6 +79,7 @@
                     android:paddingBottom="2dp"
                     android:text="@string/production"
                     android:textAlignment="center"
+                    android:textColor="#D7CCC8"
                     android:textSize="12sp" />
             </RelativeLayout>
 
@@ -106,6 +108,7 @@
                     android:gravity="center|start"
                     android:paddingStart="3dp"
                     android:text="@string/cost"
+                    android:textColor="#FFE0B2"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
@@ -114,7 +117,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/time"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFE0B2" />
 
             </LinearLayout>
         </LinearLayout>
