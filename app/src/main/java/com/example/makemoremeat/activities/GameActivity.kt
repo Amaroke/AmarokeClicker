@@ -1,4 +1,4 @@
-package com.example.makemoremeat
+package com.example.makemoremeat.activities
 
 import android.content.Context
 import android.os.Build
@@ -10,6 +10,7 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import com.example.makemoremeat.R
 import com.example.makemoremeat.controllers.ControllerFooter
 import com.example.makemoremeat.controllers.ControllerHeader
 import com.example.makemoremeat.controllers.ControllerProduction
