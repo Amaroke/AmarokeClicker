@@ -1,6 +1,5 @@
 package com.example.makemoremeat.activities
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -10,6 +9,8 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import com.example.makemoremeat.Backup
+import com.example.makemoremeat.BackupToSharedPreference
 import com.example.makemoremeat.R
 import com.example.makemoremeat.controllers.ControllerFooter
 import com.example.makemoremeat.controllers.ControllerHeader
@@ -89,16 +90,15 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-        game.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong(
-                "money", 0
-        ).toDouble()
+        val backup = BackupToSharedPreference().getSavedObjectFromPreference(this,"game","game",Backup::class.java)
+        if(backup != null) game.restore(backup)
     }
 
     override fun onStop() {
         super.onStop()
-        val sharedPreferences =
-                getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putLong("money", game.money.toLong()).apply()
+        val backup = BackupToSharedPreference()
+        val backupGame = game.backup()
+        backup.saveObjectToSharedPreference(this,"game", "game", backupGame)
     }
 
 }

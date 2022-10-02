@@ -1,5 +1,6 @@
 package com.example.makemoremeat.models
 
+import com.example.makemoremeat.Backup
 import com.example.makemoremeat.PropertyChangeAware
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -23,6 +24,14 @@ class Game : PropertyChangeAware() {
 
     fun hardReset() {
         money = 0.0
+    }
+
+    fun backup(): Backup {
+        return Backup(money)
+    }
+
+    fun restore(backup: Backup){
+        money = backup.money
     }
 
 }
