@@ -1,13 +1,13 @@
 package com.example.makemoremeat.models
 
 class Production(
-    initialNumber: Int,
-    initialCost: Long,
-    initialProduction: Long,
-    initialProductionTime: Int,
-    val image: Int,
-    private val game: Game
-)  {
+        initialNumber: Double,
+        initialCost: Double,
+        initialProduction: Double,
+        initialProductionTime: Double,
+        val image: Int,
+        private val game: Game
+) {
 
     var actualCost = initialCost
     var actualProduction = initialProduction
@@ -15,11 +15,11 @@ class Production(
     var numberPossessed = initialNumber
 
     fun upgradeProduction() {
-        game.money -= actualCost
+        game.money -= actualCost.toLong()
         numberPossessed++
         actualProduction++
         actualCost++
-        if (numberPossessed % 10 == 0) {
+        if (numberPossessed % 10 == 0.0) {
             actualProductionTime /= 2
         }
     }

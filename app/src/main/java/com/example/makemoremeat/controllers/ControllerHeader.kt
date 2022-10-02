@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.example.makemoremeat.R
 import com.example.makemoremeat.models.Game
 
-class ControllerHeader(private val game: Game, private val viewHeader: View)  {
+class ControllerHeader(private val game: Game, private val viewHeader: View) {
 
     private var money: TextView = viewHeader.findViewById(R.id.textViewMoney)
     private var moneyPerSecond: TextView = viewHeader.findViewById(R.id.textViewMoneyPerSecond)
@@ -18,7 +18,7 @@ class ControllerHeader(private val game: Game, private val viewHeader: View)  {
     private var buttonXMax: Button = viewHeader.findViewById(R.id.buttonXMax)
     private var settings: ImageButton = viewHeader.findViewById(R.id.imageButtonSettings)
 
-    init{
+    init {
         settings.setOnClickListener {
             hardReset()
         }
@@ -26,14 +26,10 @@ class ControllerHeader(private val game: Game, private val viewHeader: View)  {
 
     private fun hardReset() {
         val builder = AlertDialog.Builder(viewHeader.context)
-        builder.setMessage("Are you sure you want to Reset?")
-            .setCancelable(false)
-            .setPositiveButton("Yes") { _, _ ->
-                // Delete selected note from database
+        builder.setMessage("Are you sure you want to Reset?").setCancelable(false)
+            .setPositiveButton("Yes") { _, _ -> // Delete selected note from database
                 game.hardReset()
-            }
-            .setNegativeButton("No") { dialog, _ ->
-                // Dismiss the dialog
+            }.setNegativeButton("No") { dialog, _ -> // Dismiss the dialog
                 dialog.dismiss()
             }
         val alert = builder.create()
@@ -50,18 +46,21 @@ class ControllerHeader(private val game: Game, private val viewHeader: View)  {
                 buttonX25.isClickable = true
                 buttonXMax.isClickable = true
             }
+
             3 -> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = true
                 buttonX25.isClickable = false
                 buttonXMax.isClickable = true
             }
+
             4 -> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = true
                 buttonX25.isClickable = true
                 buttonXMax.isClickable = false
             }
+
             else -> {
                 buttonX1.isClickable = false
                 buttonX10.isClickable = true

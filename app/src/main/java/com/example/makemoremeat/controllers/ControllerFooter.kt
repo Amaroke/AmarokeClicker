@@ -11,23 +11,21 @@ import com.example.makemoremeat.R
 import com.example.makemoremeat.activities.ButcherActivity
 import com.example.makemoremeat.models.Game
 
-
 class ControllerFooter(context: Activity, private val game: Game, viewHeader: View) {
-
 
     init {
         val spinner: Button = viewHeader.findViewById(R.id.spinner)
         spinner.setOnClickListener {
-
 
             val arrayAdapter: ArrayAdapter<*>
             val users = context.resources.getStringArray(R.array.menuFooter)
 
             // access the listView from xml file
             val mListView = viewHeader.findViewById<ListView>(R.id.fdp)
-            arrayAdapter = ArrayAdapter(context,
-                android.R.layout.simple_list_item_1, users)
-            if(mListView.adapter == null) {
+            arrayAdapter = ArrayAdapter(
+                    context, android.R.layout.simple_list_item_1, users
+            )
+            if (mListView.adapter == null) {
                 mListView.adapter = arrayAdapter
             } else {
                 mListView.adapter = null

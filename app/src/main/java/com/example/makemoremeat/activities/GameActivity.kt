@@ -19,7 +19,6 @@ import com.example.makemoremeat.models.Production
 
 class GameActivity : AppCompatActivity() {
 
-
     private var game = Game()
 
     //Views
@@ -39,10 +38,9 @@ class GameActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
-            @Suppress("DEPRECATION")
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            @Suppress("DEPRECATION") window.setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
         this.setContentView(R.layout.activity_main)
@@ -53,33 +51,31 @@ class GameActivity : AppCompatActivity() {
 
         viewsProduction = this.findViewById<LinearLayout>(R.id.productionsList).children
         val imgArray = intArrayOf(
-            R.drawable.chicken,
-            R.drawable.beef,
-            R.drawable.mutton,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork
+                R.drawable.chicken,
+                R.drawable.beef,
+                R.drawable.mutton,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork,
+                R.drawable.pork
         )
 
         for ((index, value) in viewsProduction.withIndex()) {
             controllersProduction += ControllerProduction(
-                this,
-                game,
-                value,
-                Production(
-                    if (index == 0) 1 else 0,
-                    (index + 1).toLong(),
-                    (index + 1).toLong(),
-                    index + 1,
-                    imgArray[index], game
-                )
+                    this, game, value, Production(
+                    if (index == 0) 1.0 else 0.0,
+                    (index + 1).toDouble(),
+                    (index + 1).toDouble(),
+                    index + 1.0,
+                    imgArray[index],
+                    game
+            )
             )
         }
 
@@ -91,13 +87,19 @@ class GameActivity : AppCompatActivity() {
             for (controller in controllersProduction) {
                 controller.refresh()
             }
-            val sharedPreferences = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
-            sharedPreferences.edit().putLong("money", game.money).apply()
         }
 
-        game.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong("money",0)
+        game.money = getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE).getLong(
+                "money", 0
+        ).toDouble()
     }
 
+    override fun onStop() {
+        super.onStop()
+        val sharedPreferences =
+                getSharedPreferences("com.example.makemoremeat", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putLong("money", game.money.toLong()).apply()
+    }
 
 }
 

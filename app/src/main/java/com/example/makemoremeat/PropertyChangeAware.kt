@@ -11,8 +11,7 @@ open class PropertyChangeAware {
         propertyChangeSupport.addPropertyChangeListener(listener)
     }
 
-    fun removePropertyChangeListener(listener: PropertyChangeListener)
-    {
+    fun removePropertyChangeListener(listener: PropertyChangeListener) {
         propertyChangeSupport.removePropertyChangeListener(listener)
     }
 }

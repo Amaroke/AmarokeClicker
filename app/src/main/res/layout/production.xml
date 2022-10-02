@@ -97,8 +97,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/plus1"
                     android:textAlignment="center"
-                    android:textSize="11sp"
-                    />
+                    android:textSize="11sp" />
 
 
                 <TextView

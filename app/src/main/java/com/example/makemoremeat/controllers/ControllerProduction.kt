@@ -8,25 +8,24 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.R
+import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.models.Production
 
 class ControllerProduction(
-    private val context: Activity,
-    private val game: Game,
-    view: View,
-    private val production: Production
-)  {
+        private val context: Activity,
+        private val game: Game,
+        view: View,
+        private val production: Production
+) {
 
     private var startProduction: ImageButton = view.findViewById(R.id.imageButtonProduction)
     private var possesses: TextView = view.findViewById(R.id.textViewPossesses)
-    private var progressBarProduction: ProgressBar =
-        view.findViewById(R.id.progressBarProduction)
+    private var progressBarProduction: ProgressBar = view.findViewById(R.id.progressBarProduction)
     private var textProduction: TextView = view.findViewById(R.id.textViewProduction)
     private var upgradeProduction: Button = view.findViewById(R.id.buttonUpgradeProduction)
     private var upgradeCostProduction: TextView =
-        view.findViewById(R.id.textViewUpgradeCostProduction)
+            view.findViewById(R.id.textViewUpgradeCostProduction)
     private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
     private var productionOn: Boolean = false
 
@@ -52,7 +51,7 @@ class ControllerProduction(
             possesses.text = production.numberPossessed.toString()
             textProduction.text = production.actualProduction.toString()
             upgradeCostProduction.text =
-                context.getString(R.string.costValue, production.actualCost)
+                    context.getString(R.string.costValue, production.actualCost.toLong())
             if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
@@ -68,7 +67,7 @@ class ControllerProduction(
     }
 
     private fun setBackgroundImage() {
-        if(production.numberPossessed > 0) {
+        if (production.numberPossessed > 0) {
             startProduction.setBackgroundResource(production.image)
         } else {
             startProduction.setBackgroundResource(R.drawable.production_unknow)
@@ -76,29 +75,52 @@ class ControllerProduction(
     }
 
     private fun startProduction() {
+        val butcher = true
+
         if (production.numberPossessed > 0 && !productionOn) {
-            var progressBarStatus = 0
             productionOn = true
             startTimerProduction()
-            Thread {
+            var progressBarStatus: Int
+            if (butcher) {
+                progressBarProduction.progress = 100
 
-                while (progressBarStatus < 100) {
+                Thread {
+                    while (true) {
+                        val productionPerSecond =
+                                production.actualProduction / (production.actualProductionTime)
+                        try {
+                            Thread.sleep(1000)
+                            game.money += productionPerSecond
+                        } catch (e: InterruptedException) {
+                            e.printStackTrace()
+                        }
 
-                    try {
-                        progressBarStatus += 1
-                        Thread.sleep(production.actualProductionTime.toLong())
-                    } catch (e: InterruptedException) {
-                        e.printStackTrace()
                     }
-                    progressBarProduction.progress = progressBarStatus
+                }.start()
 
-                }
-
+            } else {
                 progressBarStatus = 0
-                progressBarProduction.progress = progressBarStatus
-                game.money += production.actualProduction
-                productionOn = false
-            }.start()
+
+                Thread {
+
+                    while (progressBarStatus < 100) {
+
+                        try {
+                            progressBarStatus += 1
+                            Thread.sleep(production.actualProductionTime.toLong())
+                        } catch (e: InterruptedException) {
+                            e.printStackTrace()
+                        }
+                        progressBarProduction.progress = progressBarStatus
+
+                    }
+
+                    progressBarStatus = 0
+                    progressBarProduction.progress = progressBarStatus
+                    game.money += production.actualProduction.toLong()
+                    productionOn = false
+                }.start()
+            }
         }
     }
 
@@ -106,19 +128,16 @@ class ControllerProduction(
         setTimerOn()
 
         object : CountDownTimer(
-            (production.actualProductionTime * 100).toLong(),
-            100
+                (production.actualProductionTime * 100).toLong(), 100
         ) {
 
             override fun onTick(millisUntilFinished: Long) {
                 val hours = millisUntilFinished / 1000 / 3600
                 val minutes = millisUntilFinished / 1000 / 60 % 60
                 val seconds = millisUntilFinished / 1000 % 60
-                if (hours > 0)
-                    timeLeftProduction.text =
+                if (hours > 0) timeLeftProduction.text =
                         context.getString(R.string.time, hours, minutes, seconds)
-                else
-                    timeLeftProduction.text =
+                else timeLeftProduction.text =
                         context.getString(R.string.timeNoHours, minutes, seconds)
             }
 
