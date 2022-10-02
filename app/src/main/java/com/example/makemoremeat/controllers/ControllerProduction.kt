@@ -17,7 +17,7 @@ class ControllerProduction(
     private val game: Game,
     view: View,
     private val production: Production
-) {
+)  {
 
     private var startProduction: ImageButton = view.findViewById(R.id.imageButtonProduction)
     private var possesses: TextView = view.findViewById(R.id.textViewPossesses)

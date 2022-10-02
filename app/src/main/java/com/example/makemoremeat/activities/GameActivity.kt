@@ -19,6 +19,7 @@ import com.example.makemoremeat.models.Production
 
 class GameActivity : AppCompatActivity() {
 
+
     private var game = Game()
 
     //Views

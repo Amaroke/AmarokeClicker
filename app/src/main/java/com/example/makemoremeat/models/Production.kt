@@ -7,7 +7,7 @@ class Production(
     initialProductionTime: Int,
     val image: Int,
     private val game: Game
-) {
+)  {
 
     var actualCost = initialCost
     var actualProduction = initialProduction

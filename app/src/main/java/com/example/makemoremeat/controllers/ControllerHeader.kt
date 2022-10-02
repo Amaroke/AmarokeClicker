@@ -5,10 +5,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.R
+import com.example.makemoremeat.models.Game
 
-class ControllerHeader(private val game: Game, private val viewHeader: View) {
+class ControllerHeader(private val game: Game, private val viewHeader: View)  {
 
     private var money: TextView = viewHeader.findViewById(R.id.textViewMoney)
     private var moneyPerSecond: TextView = viewHeader.findViewById(R.id.textViewMoneyPerSecond)

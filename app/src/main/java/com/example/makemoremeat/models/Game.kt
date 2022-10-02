@@ -15,6 +15,11 @@ class Game : PropertyChangeAware() {
     var money: Long by Delegates.observable(0, observer)
     var moneyPerSecond = 0
     var fastUP = 1 // 1 = x1, 2 = x10, 3 = x25, 4 = xMax
+    var butchers:Array<Butcher> = arrayOf()
+
+    fun addButcher(butcher: Butcher) {
+        butchers.plus(butcher)
+    }
 
     fun hardReset() {
         money = 0
