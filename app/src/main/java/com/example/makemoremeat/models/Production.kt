@@ -1,12 +1,12 @@
 package com.example.makemoremeat.models
 
 class Production(
-        initialNumber: Double,
-        initialCost: Double,
-        initialProduction: Double,
-        initialProductionTime: Double,
-        val image: Int,
-        private val game: Game
+    initialNumber: Double,
+    initialCost: Double,
+    initialProduction: Double,
+    initialProductionTime: Double,
+    val image: Int,
+    private val game: Game
 ) {
 
     var actualCost = initialCost

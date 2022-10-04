@@ -22,7 +22,7 @@ class ButcherActivity : AppCompatActivity() {
             val production = EnumProduction.values()[(0..12).random()]
             val random = (0..100).random()
             val rarity =
-                    if (random < 1) EnumRarity.SSR else if (random < 7) EnumRarity.SR else EnumRarity.R
+                if (random < 1) EnumRarity.SSR else if (random < 7) EnumRarity.SR else EnumRarity.R
             val butcher = Butcher(rarity, production)
             game.addButcher(butcher)
             val i = Intent(this, GameActivity::class.java)

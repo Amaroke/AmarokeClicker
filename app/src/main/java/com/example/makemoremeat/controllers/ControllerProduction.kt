@@ -13,10 +13,10 @@ import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.models.Production
 
 class ControllerProduction(
-        private val context: Activity,
-        private val game: Game,
-        view: View,
-        private val production: Production
+    private val context: Activity,
+    private val game: Game,
+    view: View,
+    private val production: Production
 ) {
 
     private var startProduction: ImageButton = view.findViewById(R.id.imageButtonProduction)
@@ -25,7 +25,7 @@ class ControllerProduction(
     private var textProduction: TextView = view.findViewById(R.id.textViewProduction)
     private var upgradeProduction: Button = view.findViewById(R.id.buttonUpgradeProduction)
     private var upgradeCostProduction: TextView =
-            view.findViewById(R.id.textViewUpgradeCostProduction)
+        view.findViewById(R.id.textViewUpgradeCostProduction)
     private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
     private var productionOn: Boolean = false
 
@@ -51,7 +51,7 @@ class ControllerProduction(
             possesses.text = production.numberPossessed.toString()
             textProduction.text = production.actualProduction.toString()
             upgradeCostProduction.text =
-                    context.getString(R.string.costValue, production.actualCost.toLong())
+                context.getString(R.string.costValue, production.actualCost.toLong())
             if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
@@ -87,7 +87,7 @@ class ControllerProduction(
                 Thread {
                     while (true) {
                         val productionPerSecond =
-                                production.actualProduction / (production.actualProductionTime)
+                            production.actualProduction / production.actualProductionTime
                         try {
                             Thread.sleep(1000)
                             game.money += productionPerSecond
@@ -128,7 +128,7 @@ class ControllerProduction(
         setTimerOn()
 
         object : CountDownTimer(
-                (production.actualProductionTime * 100).toLong(), 100
+            (production.actualProductionTime * 100).toLong(), 100
         ) {
 
             override fun onTick(millisUntilFinished: Long) {
@@ -136,9 +136,9 @@ class ControllerProduction(
                 val minutes = millisUntilFinished / 1000 / 60 % 60
                 val seconds = millisUntilFinished / 1000 % 60
                 if (hours > 0) timeLeftProduction.text =
-                        context.getString(R.string.time, hours, minutes, seconds)
+                    context.getString(R.string.time, hours, minutes, seconds)
                 else timeLeftProduction.text =
-                        context.getString(R.string.timeNoHours, minutes, seconds)
+                    context.getString(R.string.timeNoHours, minutes, seconds)
             }
 
             override fun onFinish() {

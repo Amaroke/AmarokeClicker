@@ -9,9 +9,8 @@ import android.widget.Button
 import android.widget.ListView
 import com.example.makemoremeat.R
 import com.example.makemoremeat.activities.ButcherActivity
-import com.example.makemoremeat.models.Game
 
-class ControllerFooter(context: Activity, private val game: Game, viewHeader: View) {
+class ControllerFooter(context: Activity, viewHeader: View) {
 
     init {
         val spinner: Button = viewHeader.findViewById(R.id.spinner)
@@ -23,7 +22,7 @@ class ControllerFooter(context: Activity, private val game: Game, viewHeader: Vi
             // access the listView from xml file
             val mListView = viewHeader.findViewById<ListView>(R.id.fdp)
             arrayAdapter = ArrayAdapter(
-                    context, android.R.layout.simple_list_item_1, users
+                context, android.R.layout.simple_list_item_1, users
             )
             if (mListView.adapter == null) {
                 mListView.adapter = arrayAdapter

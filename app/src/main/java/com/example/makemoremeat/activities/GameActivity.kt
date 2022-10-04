@@ -9,8 +9,6 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
-import com.example.makemoremeat.Backup
-import com.example.makemoremeat.BackupToSharedPreference
 import com.example.makemoremeat.R
 import com.example.makemoremeat.controllers.ControllerFooter
 import com.example.makemoremeat.controllers.ControllerHeader
@@ -40,48 +38,47 @@ class GameActivity : AppCompatActivity() {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
             @Suppress("DEPRECATION") window.setFlags(
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
         this.setContentView(R.layout.activity_main)
-
 
         viewHeader = this.findViewById(R.id.header)
         controllerHeader = ControllerHeader(game, viewHeader)
 
         viewsProduction = this.findViewById<LinearLayout>(R.id.productionsList).children
         val imgArray = intArrayOf(
-                R.drawable.chicken,
-                R.drawable.beef,
-                R.drawable.mutton,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork,
-                R.drawable.pork
+            R.drawable.chicken,
+            R.drawable.beef,
+            R.drawable.mutton,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork,
+            R.drawable.pork
         )
 
         for ((index, value) in viewsProduction.withIndex()) {
             controllersProduction += ControllerProduction(
-                    this, game, value, Production(
+                this, game, value, Production(
                     if (index == 0) 1.0 else 0.0,
                     (index + 1).toDouble(),
                     (index + 1).toDouble(),
                     index + 1.0,
                     imgArray[index],
                     game
-            )
+                )
             )
         }
 
         viewFooter = this.findViewById(R.id.footer)
-        controllerFooter = ControllerFooter(this, game, viewFooter)
+        controllerFooter = ControllerFooter(this, viewFooter)
 
         game.addPropertyChangeListener {
             controllerHeader.refresh()
@@ -90,15 +87,12 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-        val backup = BackupToSharedPreference().getSavedObjectFromPreference(this,"game","game",Backup::class.java)
-        if(backup != null) game.restore(backup)
+        game.restore(this)
     }
 
     override fun onStop() {
         super.onStop()
-        val backup = BackupToSharedPreference()
-        val backupGame = game.backup()
-        backup.saveObjectToSharedPreference(this,"game", "game", backupGame)
+        game.backup(this)
     }
 
 }

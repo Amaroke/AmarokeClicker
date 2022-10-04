@@ -1,7 +1,8 @@
 package com.example.makemoremeat.models
 
-import com.example.makemoremeat.Backup
+import android.content.Context
 import com.example.makemoremeat.PropertyChangeAware
+import com.example.makemoremeat.backups.GameBackup
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -16,7 +17,7 @@ class Game : PropertyChangeAware() {
     var money: Double by Delegates.observable(0.0, observer)
     var moneyPerSecond = 0
     var fastUP = 1 // 1 = x1, 2 = x10, 3 = x25, 4 = xMax
-    var butchers: Array<Butcher> = arrayOf()
+    private var butchers: Array<Butcher> = arrayOf()
 
     fun addButcher(butcher: Butcher) {
         butchers.plus(butcher)
@@ -26,12 +27,22 @@ class Game : PropertyChangeAware() {
         money = 0.0
     }
 
-    fun backup(): Backup {
-        return Backup(money)
+    fun backup(context: Context) {
+        val gameBackup = GameBackup(context, money, fastUP, butchers)
+        gameBackup.saveObjectToSharedPreference(context, "preferences", "game", gameBackup)
     }
 
-    fun restore(backup: Backup){
-        money = backup.money
+    fun restore(context: Context) {
+        val gameBackup = GameBackup(context)
+        gameBackup.getSavedObjectFromPreference(
+            context,
+            "preferences",
+            "game",
+            GameBackup::class.java
+        )
+        money = gameBackup.money
+        fastUP = gameBackup.fastUP
+        butchers = gameBackup.butchers
     }
 
 }
