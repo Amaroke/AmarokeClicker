@@ -19,7 +19,6 @@ class ControllerFooter(context: Activity, viewHeader: View) {
             val arrayAdapter: ArrayAdapter<*>
             val users = context.resources.getStringArray(R.array.menuFooter)
 
-            // access the listView from xml file
             val mListView = viewHeader.findViewById<ListView>(R.id.fdp)
             arrayAdapter = ArrayAdapter(
                 context, android.R.layout.simple_list_item_1, users

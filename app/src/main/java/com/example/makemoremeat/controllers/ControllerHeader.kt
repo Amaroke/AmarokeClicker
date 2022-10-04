@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.makemoremeat.R
+import com.example.makemoremeat.enumerations.FastUP
 import com.example.makemoremeat.models.Game
 
 class ControllerHeader(private val game: Game, private val viewHeader: View) {
@@ -40,21 +41,21 @@ class ControllerHeader(private val game: Game, private val viewHeader: View) {
         money.text = game.money.toString()
         moneyPerSecond.text = game.moneyPerSecond.toString()
         when (game.fastUP) {
-            2 -> {
+            FastUP.X10-> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = false
                 buttonX25.isClickable = true
                 buttonXMax.isClickable = true
             }
 
-            3 -> {
+            FastUP.X25 -> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = true
                 buttonX25.isClickable = false
                 buttonXMax.isClickable = true
             }
 
-            4 -> {
+            FastUP.XMax -> {
                 buttonX1.isClickable = true
                 buttonX10.isClickable = true
                 buttonX25.isClickable = true

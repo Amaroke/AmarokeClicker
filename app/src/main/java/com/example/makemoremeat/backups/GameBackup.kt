@@ -1,13 +1,14 @@
 package com.example.makemoremeat.backups
 
 import android.content.Context
+import com.example.makemoremeat.enumerations.FastUP
 
 class GameBackup(context: Context) : BackupToSharedPreference() {
 
     var money: Double = 0.0
-    var fastUP: Int = 1
+    var fastUP: FastUP = FastUP.X1
 
-    constructor(context: Context, money: Double, fastUP: Int) : this(
+    constructor(context: Context, money: Double, fastUP: FastUP) : this(
         context
     ) {
         this.money = money
@@ -18,7 +19,7 @@ class GameBackup(context: Context) : BackupToSharedPreference() {
         val savedObject =
             getSavedObjectFromPreference(context, "preferences", "game", GameBackup::class.java)
         this.money = savedObject?.money ?: 0.0
-        this.fastUP = savedObject?.fastUP ?: 1
+        this.fastUP = savedObject?.fastUP ?: FastUP.X1
         // TODO save butchers and production
     }
 

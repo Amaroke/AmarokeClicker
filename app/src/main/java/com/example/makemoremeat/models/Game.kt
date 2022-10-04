@@ -1,9 +1,11 @@
 package com.example.makemoremeat.models
 
 import android.content.Context
-import com.example.makemoremeat.PropertyChangeAware
+import com.example.makemoremeat.tools.PropertyChangeAware
 import com.example.makemoremeat.R
 import com.example.makemoremeat.backups.GameBackup
+import com.example.makemoremeat.enumerations.FastUP
+import com.example.makemoremeat.tools.DbConstants
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -17,7 +19,7 @@ class Game : PropertyChangeAware() {
 
     var money: Double by Delegates.observable(0.0, observer)
     var moneyPerSecond = 0
-    var fastUP = 1 // 1 = x1, 2 = x10, 3 = x25, 4 = xMax
+    var fastUP = FastUP.X1
     var productions: MutableList<Production> = mutableListOf()
     private var butchers: Array<Butcher> = emptyArray()
 
@@ -43,7 +45,7 @@ class Game : PropertyChangeAware() {
             R.drawable.pork
         )
 
-        for (i in (0..12)) {
+        for (i in (0 until DbConstants.PRODUCTION_NUMBER)) {
             val production = Production(
                 if (i == 0) 1.0 else 0.0,
                 (i + 1).toDouble(),

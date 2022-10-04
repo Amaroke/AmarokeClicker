@@ -1,4 +1,4 @@
 package com.example.makemoremeat.enumerations
 
-enum class EnumRarity { R, SR, SSR
+enum class Rarity { R, SR, SSR
 }

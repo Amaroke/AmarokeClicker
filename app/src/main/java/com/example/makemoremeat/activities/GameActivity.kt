@@ -31,6 +31,8 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //We remove the notification bar and the title
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.supportActionBar?.hide()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -41,8 +43,10 @@ class GameActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+
         this.setContentView(R.layout.activity_main)
 
+        //We restore the game as saved in the SharedPreferences
         game.restore(this)
 
         viewHeader = this.findViewById(R.id.header)

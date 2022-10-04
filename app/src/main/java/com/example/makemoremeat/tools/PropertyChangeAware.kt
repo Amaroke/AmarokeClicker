@@ -1,4 +1,4 @@
-package com.example.makemoremeat
+package com.example.makemoremeat.tools
 
 import java.beans.PropertyChangeListener
 import java.beans.PropertyChangeSupport

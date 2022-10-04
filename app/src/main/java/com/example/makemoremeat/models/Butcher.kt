@@ -1,11 +1,11 @@
 package com.example.makemoremeat.models
 
-import com.example.makemoremeat.enumerations.EnumProduction
-import com.example.makemoremeat.enumerations.EnumRarity
+import com.example.makemoremeat.enumerations.Production
+import com.example.makemoremeat.enumerations.Rarity
 
 class Butcher(
-    private val rarity: EnumRarity,
-    private val production: EnumProduction
+    private val rarity: Rarity,
+    private val production: Production
 ) {
 
     private val level: Int = 0
