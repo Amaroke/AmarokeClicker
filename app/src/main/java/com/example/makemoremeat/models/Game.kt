@@ -1,15 +1,16 @@
 package com.example.makemoremeat.models
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import com.example.makemoremeat.tools.PropertyChangeAware
 import com.example.makemoremeat.R
-import com.example.makemoremeat.backups.GameBackup
 import com.example.makemoremeat.enumerations.FastUP
+import com.example.makemoremeat.enumerations.ProductionNames
 import com.example.makemoremeat.tools.DbConstants
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
-class Game : PropertyChangeAware() {
+class Game : PropertyChangeAware(){
 
     private val observer = { property: KProperty<*>,
                              oldValue: Any,
@@ -52,7 +53,8 @@ class Game : PropertyChangeAware() {
                 (i + 1).toDouble(),
                 i + 1.0,
                 imgArray[i],
-                this
+                this,
+                ProductionNames.values()[i]
             )
             this.productions += production
         }
@@ -67,20 +69,18 @@ class Game : PropertyChangeAware() {
     }
 
     fun backup(context: Context) {
-        val gameBackup = GameBackup(context, money, fastUP)
-        gameBackup.saveObjectToSharedPreference(context, "preferences", "game", gameBackup)
+        context.getSharedPreferences("game", MODE_PRIVATE).edit().putString("money", money.toString()).apply()
+        for(production in productions){
+            production.backup(context)
+        }
     }
 
     fun restore(context: Context) {
-        val gameBackup = GameBackup(context)
-        gameBackup.getSavedObjectFromPreference(
-            context,
-            "preferences",
-            "game",
-            GameBackup::class.java
-        )
-        money = gameBackup.money
-        fastUP = gameBackup.fastUP
+        money = context.getSharedPreferences("game", MODE_PRIVATE).getString("money", "0")?.toDouble()
+            ?: 0.0
+        for (production in productions) {
+            production.restore(context)
+        }
     }
 
 }
