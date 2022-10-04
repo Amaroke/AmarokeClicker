@@ -14,7 +14,6 @@ import com.example.makemoremeat.controllers.ControllerFooter
 import com.example.makemoremeat.controllers.ControllerHeader
 import com.example.makemoremeat.controllers.ControllerProduction
 import com.example.makemoremeat.models.Game
-import com.example.makemoremeat.models.Production
 
 class GameActivity : AppCompatActivity() {
 
@@ -44,36 +43,16 @@ class GameActivity : AppCompatActivity() {
         }
         this.setContentView(R.layout.activity_main)
 
+        game.restore(this)
+
         viewHeader = this.findViewById(R.id.header)
         controllerHeader = ControllerHeader(game, viewHeader)
 
         viewsProduction = this.findViewById<LinearLayout>(R.id.productionsList).children
-        val imgArray = intArrayOf(
-            R.drawable.chicken,
-            R.drawable.beef,
-            R.drawable.mutton,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork
-        )
 
         for ((index, value) in viewsProduction.withIndex()) {
             controllersProduction += ControllerProduction(
-                this, game, value, Production(
-                    if (index == 0) 1.0 else 0.0,
-                    (index + 1).toDouble(),
-                    (index + 1).toDouble(),
-                    index + 1.0,
-                    imgArray[index],
-                    game
-                )
+                this, game, value, game.productions[index]
             )
         }
 
@@ -86,8 +65,6 @@ class GameActivity : AppCompatActivity() {
                 controller.refresh()
             }
         }
-
-        game.restore(this)
     }
 
     override fun onStop() {
