@@ -5,7 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import com.example.makemoremeat.tools.PropertyChangeAware
 import com.example.makemoremeat.R
 import com.example.makemoremeat.enumerations.FastUP
-import com.example.makemoremeat.enumerations.ProductionNames
+import com.example.makemoremeat.enumerations.ProductionInformation
 import com.example.makemoremeat.tools.DbConstants
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -29,6 +29,7 @@ class Game : PropertyChangeAware(){
     }
 
     private fun createNewProduction() {
+        productions.clear()
 
         val imgArray = intArrayOf(
             R.drawable.chicken,
@@ -46,15 +47,11 @@ class Game : PropertyChangeAware(){
             R.drawable.pork
         )
 
-        for (i in (0 until DbConstants.PRODUCTION_NUMBER)) {
+        for (i in 0 until DbConstants.PRODUCTION_NUMBER) {
             val production = Production(
-                if (i == 0) 1.0 else 0.0,
-                (i + 1).toDouble(),
-                (i + 1).toDouble(),
-                i + 1.0,
                 imgArray[i],
                 this,
-                ProductionNames.values()[i]
+                ProductionInformation.values()[i]
             )
             this.productions += production
         }
@@ -66,6 +63,7 @@ class Game : PropertyChangeAware(){
 
     fun hardReset() {
         money = 0.0
+        createNewProduction()
     }
 
     fun backup(context: Context) {

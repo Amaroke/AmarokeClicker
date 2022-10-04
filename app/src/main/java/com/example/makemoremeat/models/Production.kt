@@ -1,39 +1,38 @@
 package com.example.makemoremeat.models
 
 import android.content.Context
-import com.example.makemoremeat.enumerations.ProductionNames
+import com.example.makemoremeat.enumerations.ProductionInformation
+import kotlin.math.pow
 
 class Production (
-    initialNumber: Double,
-    initialCost: Double,
-    initialProduction: Double,
-    initialProductionTime: Double,
     val image: Int,
     private val game: Game,
-    private val name: ProductionNames
+    private val productionInformation: ProductionInformation
 ) {
 
-    var actualCost = initialCost
-    var actualProduction = initialProduction
-    var actualProductionTime = initialProductionTime
-    var numberPossessed = initialNumber
+    var numberPossessed = productionInformation.initialNumber
+    var actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
+    var actualProduction = productionInformation.initialProduction
+    var actualProductionTime = productionInformation.initialProductionTime
+
 
     fun upgradeProduction() {
         game.money -= actualCost.toLong()
         numberPossessed++
         actualProduction++
-        actualCost++
+        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
         if (numberPossessed % 10 == 0.0) {
             actualProductionTime /= 2
         }
     }
 
     fun backup(context: Context) {
-        context.getSharedPreferences(name.toString(), Context.MODE_PRIVATE).edit().putString("numberPossessed", numberPossessed.toString()).apply()
+        context.getSharedPreferences(productionInformation.toString(), Context.MODE_PRIVATE).edit().putString("numberPossessed", numberPossessed.toString()).apply()
     }
 
     fun restore(context: Context) {
-        numberPossessed = context.getSharedPreferences(name.toString(), Context.MODE_PRIVATE).getString("numberPossessed", if (name==ProductionNames.Chicken) "1" else "0")?.toDouble()
-            ?: if(name == ProductionNames.Chicken) 1.0 else 0.0
+        numberPossessed = context.getSharedPreferences(productionInformation.toString(), Context.MODE_PRIVATE).getString("numberPossessed", if (productionInformation==ProductionInformation.Chicken) "1" else "0")?.toDouble()
+            ?: if(productionInformation == ProductionInformation.Chicken) 1.0 else 0.0
+        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
     }
 }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.makemoremeat.R
-import com.example.makemoremeat.enumerations.ProductionNames
+import com.example.makemoremeat.enumerations.ProductionInformation
 import com.example.makemoremeat.enumerations.Rarity
 import com.example.makemoremeat.models.Butcher
 import com.example.makemoremeat.models.Game
@@ -20,7 +20,7 @@ class ButcherActivity : AppCompatActivity() {
         val game = Game()
 
         findViewById<Button>(R.id.button).setOnClickListener {
-            val production = ProductionNames.values()[(0 until DbConstants.PRODUCTION_NUMBER).random()]
+            val production = ProductionInformation.values()[(0 until DbConstants.PRODUCTION_NUMBER).random()]
             val random = (0..100).random()
             val rarity =
                 if (random < 1) Rarity.SSR else if (random < 7) Rarity.SR else Rarity.R
