@@ -41,9 +41,10 @@
                 android:layout_alignBottom="@id/imageButtonProduction"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="@string/possesses"
+                android:text="0"
+                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="#455A64"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </RelativeLayout>
 

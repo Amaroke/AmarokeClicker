@@ -17,7 +17,14 @@ to change) :
 * Settings in the top right corner
     * Support English and French
     * Allow hard reset
-* A gacha system for "managers" (called "butcher"?)
+* A gacha system for butchers
+  * 10 levels (3* empty/bronze/silver/gold)
 * Integrate ads (google)
+* Anti-Cheat
 * Create APK
 * Publish game on PlayStore
+
+## Ideas of Lore
+
+* Chicken Butcher : Wings/Nuggets/Tenders Master
+* Vegans Butcher : Cannibal Lecter

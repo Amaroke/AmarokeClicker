@@ -48,7 +48,7 @@ class ControllerProduction(
 
     fun refresh() {
         context.runOnUiThread {
-            possesses.text = production.numberPossessed.toString()
+            possesses.text = String.format("%.0f", production.numberPossessed)
             textProduction.text = production.actualProduction.toString()
             upgradeCostProduction.text =
                 context.getString(R.string.costValue, production.actualCost.toLong())
