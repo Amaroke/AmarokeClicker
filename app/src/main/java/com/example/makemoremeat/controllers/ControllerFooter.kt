@@ -1,37 +1,37 @@
 package com.example.makemoremeat.controllers
 
 import android.app.Activity
-import android.content.Intent
+import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
+import android.widget.ImageButton
+import android.widget.LinearLayout
 import com.example.makemoremeat.R
-import com.example.makemoremeat.activities.ButcherActivity
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
+import com.google.android.material.button.MaterialButton
 
 class ControllerFooter(context: Activity, viewHeader: View) {
 
+
+
     init {
-        val spinner: Button = viewHeader.findViewById(R.id.spinner)
-        spinner.setOnClickListener {
+        lateinit var bottomSheetBehavior:BottomSheetBehavior<View>
+        lateinit var btnOpen: ImageButton
 
-            val arrayAdapter: ArrayAdapter<*>
-            val users = context.resources.getStringArray(R.array.menuFooter)
+        lateinit var view:View
 
-            val mListView = viewHeader.findViewById<ListView>(R.id.fdp)
-            arrayAdapter = ArrayAdapter(
-                context, android.R.layout.simple_list_item_1, users
-            )
-            if (mListView.adapter == null) {
-                mListView.adapter = arrayAdapter
-            } else {
-                mListView.adapter = null
+
+            btnOpen=viewHeader.findViewById(R.id.btn_open_sheet)
+            view=viewHeader.findViewById(R.id.bottomsheet)
+            bottomSheetBehavior=BottomSheetBehavior.from(view)
+            btnOpen.setOnClickListener {
+                if(bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED ) {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                } else {
+                    bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+                }
             }
-            mListView.onItemClickListener = OnItemClickListener { _, _, _, _ ->
-                val intent = Intent(context, ButcherActivity::class.java)
-                context.startActivity(intent)
-            }
-        }
+
     }
 }

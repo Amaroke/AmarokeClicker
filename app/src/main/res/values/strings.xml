@@ -16,8 +16,7 @@
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
     <string name="menu_de_selection">Menu de selection</string>
-    <string-array name="menuFooter">
-        <item>Butchers</item>
-        <item>Upgrades</item>
-    </string-array>
+        <string name="btn_text_sheet1">Shop </string>
+    <string name="btn_text_sheet2">Upgrade </string>
+        <string name="btn_text_sheet3">Butchers </string>
 </resources>
