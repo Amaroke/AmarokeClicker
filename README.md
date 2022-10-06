@@ -23,6 +23,8 @@ to change) :
 * Anti-Cheat
 * Create APK
 * Publish game on PlayStore
+* Change app theme
+* Change menu position
 
 ## Ideas of Lore
 

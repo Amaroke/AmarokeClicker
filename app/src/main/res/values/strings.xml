@@ -3,7 +3,6 @@
     <string name="possesses">Possesses</string>
     <string name="production">Production</string>
     <string name="plus1">+1</string>
-    <string name="cost">Cost</string>
     <string name="imageProduction">imageProduction</string>
     <string name="settings">Settings</string>
     <string name="xMax">xMax</string>
@@ -12,11 +11,13 @@
     <string name="x1">x1</string>
     <string name="mps">MPS</string>
     <string name="money">Money</string>
-    <string name="costValue">Cost : %1d</string>
+    <string name="cost">Cost : %1d</string>
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
     <string name="menu_de_selection">Menu de selection</string>
         <string name="btn_text_sheet1">Shop </string>
     <string name="btn_text_sheet2">Upgrade </string>
         <string name="btn_text_sheet3">Butchers </string>
+    <string name="menu">Menu</string>
+    <string name="zero">0</string>
 </resources>

@@ -10,38 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:behavior_peekHeight="35dp"
+        app:behavior_peekHeight="36dp"
         app:behavior_hideable="false"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:background="@color/gris90"
         >
 
         <ImageButton
             android:id="@+id/btn_open_sheet"
             android:layout_width="36dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_gravity="center"
             android:background="@null"
             android:gravity="center"
             android:src="@drawable/menu"
-            android:textColor="@android:color/white"
             tools:ignore="TouchTargetSizeCheck"
-            android:layout_marginBottom="5dp"/>
-        <com.google.android.material.button.MaterialButton
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/menu" />
+        <Button
             android:text="@string/btn_text_sheet1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/gris3"
             />
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:text="@string/btn_text_sheet2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/gris3"
             />
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:text="@string/btn_text_sheet3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/gris3"
             />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

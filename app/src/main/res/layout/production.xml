@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#666666">
+    android:background="@color/gris4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,11 +41,12 @@
                 android:layout_alignBottom="@id/imageButtonProduction"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="0"
+                android:text="@string/zero"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
+                android:textColor="@color/gris9"
+                android:textSize="12sp"
+                android:layout_marginBottom="3dp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -66,7 +67,14 @@
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:scaleY="5" />
+                    android:scaleY="5"
+                    android:progressBackgroundTint="@color/gris"
+                    android:progressBackgroundTintMode="@color/gris"
+                    android:progressTint="@color/gris"
+                    android:progressTintMode="@color/gris"
+                    android:secondaryProgressTint="@color/gris"
+                    android:secondaryProgressTintMode="@color/gris"
+                    />
 
                 <TextView
                     android:id="@+id/textViewProduction"
@@ -80,7 +88,7 @@
                     android:paddingBottom="2dp"
                     android:text="@string/production"
                     android:textAlignment="center"
-                    android:textColor="#D7CCC8"
+                    android:textColor="#000000"
                     android:textSize="12sp" />
             </RelativeLayout>
 
@@ -98,7 +106,8 @@
                     android:layout_height="match_parent"
                     android:text="@string/plus1"
                     android:textAlignment="center"
-                    android:textSize="11sp" />
+                    android:textSize="11sp"
+                    android:backgroundTint="@color/gris3"/>
 
 
                 <TextView
@@ -108,7 +117,7 @@
                     android:gravity="center|start"
                     android:paddingStart="3dp"
                     android:text="@string/cost"
-                    android:textColor="#FFE0B2"
+                    android:textColor="@color/gris9"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
@@ -118,7 +127,7 @@
                     android:layout_weight="1"
                     android:text="@string/time"
                     android:textAlignment="textEnd"
-                    android:textColor="#FFE0B2" />
+                    android:textColor="@color/gris9" />
 
             </LinearLayout>
         </LinearLayout>

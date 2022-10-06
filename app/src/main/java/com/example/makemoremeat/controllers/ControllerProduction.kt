@@ -49,9 +49,9 @@ class ControllerProduction(
     fun refresh() {
         context.runOnUiThread {
             possesses.text = String.format("%.0f", production.numberPossessed)
-            textProduction.text = production.actualProduction.toString()
+            textProduction.text = String.format("%.0f",production.actualProduction)
             upgradeCostProduction.text =
-                context.getString(R.string.costValue, production.actualCost.toLong())
+                context.getString(R.string.cost, production.actualCost.toLong())
             if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
@@ -75,21 +75,19 @@ class ControllerProduction(
     }
 
     private fun startProduction() {
-        val butcher = true
-
         if (production.numberPossessed > 0 && !productionOn) {
             productionOn = true
             startTimerProduction()
             var progressBarStatus: Int
-            if (butcher) {
+            if (production.actualProductionTime<1) {
                 progressBarProduction.progress = 100
 
                 Thread {
                     while (true) {
                         val productionPerSecond =
-                            production.actualProduction / production.actualProductionTime
+                            production.actualProduction / production.actualProductionTime * 10
                         try {
-                            Thread.sleep(1000)
+                            Thread.sleep(100)
                             game.money += productionPerSecond
                         } catch (e: InterruptedException) {
                             e.printStackTrace()
@@ -159,11 +157,13 @@ class ControllerProduction(
     private fun setButtonUpOn() {
         upgradeProduction.isClickable = true
         upgradeProduction.isEnabled = true
+        upgradeProduction.setBackgroundColor(ContextCompat.getColor(context, R.color.gris3))
     }
 
     private fun setButtonUpOff() {
         upgradeProduction.isClickable = false
         upgradeProduction.isEnabled = false
+        upgradeProduction.setBackgroundColor(ContextCompat.getColor(context, R.color.gris2))
     }
 
     private fun setButtonStartProductionOn() {
