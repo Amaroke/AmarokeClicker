@@ -62,6 +62,7 @@ class Game : PropertyChangeAware(){
     }
 
     fun hardReset() {
+        // TODO Améliorer le hard reset
         money = 0.0
         createNewProduction()
     }

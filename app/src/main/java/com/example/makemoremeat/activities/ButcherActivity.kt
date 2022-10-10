@@ -13,6 +13,10 @@ import com.example.makemoremeat.tools.DbConstants
 
 class ButcherActivity : AppCompatActivity() {
 
+    // TODO Idée de Lore : * Chicken Butcher : Wings/Nuggets/Tenders Master
+    // * Vegans Butcher : Cannibal Lecter
+    // TODO GACHA 10 levels (3* empty/bronze/silver/gold)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_butcher)

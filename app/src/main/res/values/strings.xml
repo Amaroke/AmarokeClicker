@@ -11,7 +11,7 @@
     <string name="x1">x1</string>
     <string name="mps">MPS</string>
     <string name="money">Money</string>
-    <string name="cost">Cost : %1d</string>
+    <string name="cost">Cost : %s</string>
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
     <string name="menu_de_selection">Menu de selection</string>

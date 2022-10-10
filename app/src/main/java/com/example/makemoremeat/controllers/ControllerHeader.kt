@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.example.makemoremeat.R
 import com.example.makemoremeat.enumerations.FastUP
 import com.example.makemoremeat.models.Game
+import com.example.makemoremeat.tools.NumberFormatter
 
 class ControllerHeader(private val game: Game, private val viewHeader: View) {
 
@@ -37,7 +38,8 @@ class ControllerHeader(private val game: Game, private val viewHeader: View) {
     }
 
     fun refresh() {
-        money.text = String.format("%.0f",game.money)
+        val formatter = NumberFormatter()
+        money.text = formatter.getFormattedNumber(game.money)
         when (game.fastUP) {
             FastUP.X10-> {
                 buttonX1.isClickable = true

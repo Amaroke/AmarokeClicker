@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import com.example.makemoremeat.R
 import com.example.makemoremeat.models.Game
 import com.example.makemoremeat.models.Production
+import com.example.makemoremeat.tools.NumberFormatter
 
 class ControllerProduction(
     private val context: Activity,
@@ -28,6 +29,7 @@ class ControllerProduction(
         view.findViewById(R.id.textViewUpgradeCostProduction)
     private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
     private var productionOn: Boolean = false
+    private var butcher = production.actualProductionTime < 1
 
     init {
         setBackgroundImage()
@@ -48,10 +50,16 @@ class ControllerProduction(
 
     fun refresh() {
         context.runOnUiThread {
+            val formatter = NumberFormatter()
             possesses.text = String.format("%.0f", production.numberPossessed)
-            textProduction.text = String.format("%.0f",production.actualProduction)
+            if (butcher) {
+                textProduction.text =
+                    formatter.getFormattedNumber(production.actualProduction / production.actualProductionTime * 100) + " /sec"
+            } else {
+                textProduction.text = formatter.getFormattedNumber(production.actualProduction)
+            }
             upgradeCostProduction.text =
-                context.getString(R.string.cost, production.actualCost.toLong())
+                context.getString(R.string.cost, formatter.getFormattedNumber(production.actualCost))
             if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
@@ -79,7 +87,8 @@ class ControllerProduction(
             productionOn = true
             startTimerProduction()
             var progressBarStatus: Int
-            if (production.actualProductionTime<1) {
+
+            if (butcher) {
                 progressBarProduction.progress = 100
 
                 Thread {
@@ -123,6 +132,7 @@ class ControllerProduction(
     }
 
     private fun startTimerProduction() {
+        //TODO Retirer timer quand la production est trop rapide
         setTimerOn()
 
         object : CountDownTimer(
@@ -180,6 +190,7 @@ class ControllerProduction(
         if (game.money >= production.actualCost) {
             production.upgradeProduction()
         }
+        butcher = production.actualProductionTime < 1
         refresh()
     }
 
