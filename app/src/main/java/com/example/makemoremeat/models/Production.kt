@@ -35,4 +35,11 @@ class Production (
             ?: if(productionInformation == ProductionInformation.Chicken) 1.0 else 0.0
         actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
     }
+
+    fun reset() {
+        numberPossessed = productionInformation.initialNumber
+        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
+        actualProduction = productionInformation.initialProduction
+        actualProductionTime = productionInformation.initialProductionTime
+    }
 }

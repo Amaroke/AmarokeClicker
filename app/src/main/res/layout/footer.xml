@@ -5,56 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Pouvoir changer de thème et la position du menu -->
+    <!-- TODO Pouvoir changer de thème et la position du menu -->
     <LinearLayout
-        android:id="@+id/bottomsheet"
+        android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:behavior_peekHeight="36dp"
-        app:behavior_hideable="false"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         android:background="@color/gris90"
-        >
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="36dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <ImageButton
-            android:id="@+id/btn_open_sheet"
+            android:id="@+id/imageButtonOpenSheet"
             android:layout_width="36dp"
             android:layout_height="26dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@null"
+            android:contentDescription="@string/menu"
             android:gravity="center"
             android:src="@drawable/menu"
-            tools:ignore="TouchTargetSizeCheck"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:contentDescription="@string/menu" />
+            tools:ignore="TouchTargetSizeCheck" />
+
         <Button
-            android:text="@string/btn_text_sheet1"
+            android:id="@+id/buttonSheetButcher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:cornerRadius="20dp"
             android:backgroundTint="@color/gris3"
-            />
+            android:text="@string/buttonTextSheetButcher"
+            app:cornerRadius="20dp" />
+
         <Button
-            android:text="@string/btn_text_sheet2"
+            android:id="@+id/buttonSheetUpgrade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:cornerRadius="20dp"
             android:backgroundTint="@color/gris3"
-            />
+            android:text="@string/buttonTextSheetUpgrade"
+            app:cornerRadius="20dp" />
+
         <Button
-            android:text="@string/btn_text_sheet3"
+            android:id="@+id/buttonSheetShop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:cornerRadius="20dp"
             android:backgroundTint="@color/gris3"
-            />
+            android:text="@string/buttonTextSheetShop"
+            app:cornerRadius="20dp" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

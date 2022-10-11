@@ -1,3 +1,4 @@
+<!-- TODO Organiser ça proprement -->
 <resources>
     <string name="app_name">Make More Meat</string>
     <string name="possesses">Possesses</string>
@@ -15,9 +16,9 @@
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
     <string name="menu_de_selection">Menu de selection</string>
-        <string name="btn_text_sheet1">Shop </string>
-    <string name="btn_text_sheet2">Upgrade </string>
-        <string name="btn_text_sheet3">Butchers </string>
+        <string name="buttonTextSheetButcher">Butchers</string>
+    <string name="buttonTextSheetUpgrade">Upgrade</string>
+        <string name="buttonTextSheetShop">Shop</string>
     <string name="menu">Menu</string>
     <string name="zero">0</string>
 </resources>

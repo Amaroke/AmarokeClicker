@@ -64,7 +64,9 @@ class Game : PropertyChangeAware(){
     fun hardReset() {
         // TODO Améliorer le hard reset
         money = 0.0
-        createNewProduction()
+        for(production in productions) {
+            production.reset()
+        }
     }
 
     fun backup(context: Context) {

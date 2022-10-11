@@ -38,7 +38,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="36dp">
+                    android:paddingBottom="36dp"
+                    android:background="@color/gris4"
+                    >
 
                     <include
                         layout="@layout/production"

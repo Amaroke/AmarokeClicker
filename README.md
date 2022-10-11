@@ -9,6 +9,7 @@ This is a personal project of an incremental game, in Kotlin, entirely created f
 * The basics of Kotlin languages
 * Linking UI and code in Android/Kotlin
 * Use Android's sharedPreferences for backups
+* Use .xml strings, colors and themes in Android programming
 
 ---------
 
