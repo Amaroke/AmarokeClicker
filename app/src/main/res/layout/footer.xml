@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO Pouvoir changer de thème et la position du menu -->
+    <!-- TODO Ability to change menu theme and position -->
     <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"

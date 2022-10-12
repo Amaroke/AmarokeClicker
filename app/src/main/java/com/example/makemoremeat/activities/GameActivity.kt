@@ -1,5 +1,6 @@
 package com.example.makemoremeat.activities
 
+import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -29,8 +30,17 @@ class GameActivity : AppCompatActivity() {
     private var controllersProduction: MutableList<ControllerProduction> = mutableListOf()
     private lateinit var controllerFooter: ControllerFooter
 
+    // TODO
+    // Chicken Butcher : Wings/Nuggets/Tenders Master
+    // Vegans Butcher : Cannibal Lecter
+    // TODO
+    // Gacha 10 levels (3* empty/bronze/silver/gold)
+    private lateinit var dialogButchers: Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dialogButchers = Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        dialogButchers.setContentView(R.layout.activity_butcher)
 
         //We remove the notification bar and the title
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -74,6 +84,10 @@ class GameActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         game.backup(this)
+    }
+
+    fun showDialogButchers() {
+        dialogButchers.show()
     }
 
 }

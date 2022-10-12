@@ -1,24 +1,28 @@
-<!-- TODO Organiser ça proprement -->
 <resources>
+    <!-- App information -->
     <string name="app_name">Make More Meat</string>
-    <string name="possesses">Possesses</string>
-    <string name="production">Production</string>
-    <string name="plus1">+1</string>
-    <string name="imageProduction">imageProduction</string>
+
+    <!-- String related to header -->
     <string name="settings">Settings</string>
     <string name="xMax">xMax</string>
     <string name="x25">x25</string>
     <string name="x10">x10</string>
     <string name="x1">x1</string>
-    <string name="mps">MPS</string>
     <string name="money">Money</string>
+
+    <!-- String related to Production -->
+    <string name="possesses">Possesses</string>
+    <string name="production">Production</string>
+    <string name="plus1">+1</string>
+    <string name="imageProduction">imageProduction</string>
     <string name="cost">Cost : %s</string>
     <string name="time">%02d:%02d:%02d</string>
     <string name="timeNoHours">%02d:%02d</string>
-    <string name="menu_de_selection">Menu de selection</string>
-        <string name="buttonTextSheetButcher">Butchers</string>
+    <string name="productionPerSecond">%s /sec</string>
+
+    <!-- String related to menu -->
+    <string name="buttonTextSheetButcher">Butchers</string>
     <string name="buttonTextSheetUpgrade">Upgrade</string>
-        <string name="buttonTextSheetShop">Shop</string>
+    <string name="buttonTextSheetShop">Shop</string>
     <string name="menu">Menu</string>
-    <string name="zero">0</string>
 </resources>

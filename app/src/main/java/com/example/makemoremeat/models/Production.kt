@@ -5,23 +5,28 @@ import com.example.makemoremeat.enumerations.ProductionInformation
 import kotlin.math.pow
 
 class Production (
-    val image: Int,
     private val game: Game,
     private val productionInformation: ProductionInformation
 ) {
 
+    val image = productionInformation.imageProduction
     var numberPossessed = productionInformation.initialNumber
-    var actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
+    var actualCost =
+        productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
+            numberPossessed - 1
+        )
     var actualProduction = productionInformation.initialProduction
     var actualProductionTime = productionInformation.initialProductionTime
-
 
     fun upgradeProduction() {
         game.money -= actualCost.toLong()
         numberPossessed++
-        actualProduction++
-        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
-        if (numberPossessed % 10 == 0.0) {
+        actualProduction = productionInformation.initialProduction * numberPossessed
+        actualCost =
+            productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
+                numberPossessed - 1
+            )
+        if (numberPossessed % 50 == 0.0) {
             actualProductionTime /= 2
         }
     }
@@ -31,14 +36,25 @@ class Production (
     }
 
     fun restore(context: Context) {
-        numberPossessed = context.getSharedPreferences(productionInformation.toString(), Context.MODE_PRIVATE).getString("numberPossessed", if (productionInformation==ProductionInformation.Chicken) "1" else "0")?.toDouble()
-            ?: if(productionInformation == ProductionInformation.Chicken) 1.0 else 0.0
-        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
+        numberPossessed =
+            context.getSharedPreferences(productionInformation.toString(), Context.MODE_PRIVATE)
+                .getString(
+                    "numberPossessed",
+                    if (productionInformation == ProductionInformation.Chicken) "1" else "0"
+                )?.toDouble()
+                ?: if (productionInformation == ProductionInformation.Chicken) 1.0 else 0.0
+        actualCost =
+            productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
+                numberPossessed - 1
+            )
     }
 
     fun reset() {
         numberPossessed = productionInformation.initialNumber
-        actualCost = productionInformation.initialCost * 1.15.pow(numberPossessed)
+        actualCost =
+            productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
+                numberPossessed - 1
+            )
         actualProduction = productionInformation.initialProduction
         actualProductionTime = productionInformation.initialProductionTime
     }

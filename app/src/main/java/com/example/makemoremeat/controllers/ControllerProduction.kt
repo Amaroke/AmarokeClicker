@@ -29,7 +29,8 @@ class ControllerProduction(
         view.findViewById(R.id.textViewUpgradeCostProduction)
     private var timeLeftProduction: TextView = view.findViewById(R.id.textViewTime)
     private var productionOn: Boolean = false
-    private var butcher = production.actualProductionTime < 1
+    private var butcher = true
+    private var timer: CountDownTimer
 
     init {
         setBackgroundImage()
@@ -45,6 +46,26 @@ class ControllerProduction(
             upgradeProduction()
         }
 
+        timer = object : CountDownTimer(
+            (production.actualProductionTime * 100).toLong(), 100
+        ) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val hours = millisUntilFinished / 1000 / 3600
+                val minutes = millisUntilFinished / 1000 / 60 % 60
+                val seconds = millisUntilFinished / 1000 % 60
+                if (hours > 0) timeLeftProduction.text =
+                    context.getString(R.string.time, hours, minutes, seconds)
+                else timeLeftProduction.text =
+                    context.getString(R.string.timeNoHours, minutes, seconds)
+            }
+
+            override fun onFinish() {
+                timeLeftProduction.text = context.getString(R.string.timeNoHours, 0, 0)
+                setTimerOff()
+            }
+        }
+
         refresh()
     }
 
@@ -52,14 +73,19 @@ class ControllerProduction(
         context.runOnUiThread {
             val formatter = NumberFormatter()
             possesses.text = String.format("%.0f", production.numberPossessed)
-            if (butcher) {
-                textProduction.text =
-                    formatter.getFormattedNumber(production.actualProduction / production.actualProductionTime * 100) + " /sec"
+            if (butcher && production.actualProductionTime < 1) {
+                textProduction.text = context.getString(
+                    R.string.productionPerSecond,
+                    formatter.getFormattedNumber(production.actualProduction / production.actualProductionTime * 100)
+                )
             } else {
                 textProduction.text = formatter.getFormattedNumber(production.actualProduction)
             }
             upgradeCostProduction.text =
-                context.getString(R.string.cost, formatter.getFormattedNumber(production.actualCost))
+                context.getString(
+                    R.string.cost,
+                    formatter.getFormattedNumber(production.actualCost)
+                )
             if (production.actualCost > game.money) {
                 setButtonUpOff()
             } else {
@@ -89,22 +115,46 @@ class ControllerProduction(
             var progressBarStatus: Int
 
             if (butcher) {
-                progressBarProduction.progress = 100
+                if (production.actualProductionTime < 1) {
+                    progressBarProduction.progress = 100
 
-                Thread {
-                    while (true) {
-                        val productionPerSecond =
-                            production.actualProduction / production.actualProductionTime * 10
-                        try {
-                            Thread.sleep(100)
-                            game.money += productionPerSecond
-                        } catch (e: InterruptedException) {
-                            e.printStackTrace()
+                    Thread {
+                        while (true) {
+                            val productionPerSecond =
+                                production.actualProduction / production.actualProductionTime * 10
+                            try {
+                                Thread.sleep(100)
+                                game.money += productionPerSecond
+                            } catch (e: InterruptedException) {
+                                e.printStackTrace()
+                            }
+
+                        }
+                    }.start()
+                } else {
+                    progressBarStatus = 0
+
+                    Thread {
+
+                        while (progressBarStatus < 100) {
+
+                            try {
+                                progressBarStatus += 1
+                                Thread.sleep(production.actualProductionTime.toLong())
+                            } catch (e: InterruptedException) {
+                                e.printStackTrace()
+                            }
+                            progressBarProduction.progress = progressBarStatus
+
                         }
 
-                    }
-                }.start()
-
+                        progressBarStatus = 0
+                        progressBarProduction.progress = progressBarStatus
+                        game.money += production.actualProduction
+                        productionOn = false
+                        startProduction()
+                    }.start()
+                }
             } else {
                 progressBarStatus = 0
 
@@ -124,7 +174,7 @@ class ControllerProduction(
 
                     progressBarStatus = 0
                     progressBarProduction.progress = progressBarStatus
-                    game.money += production.actualProduction.toLong()
+                    game.money += production.actualProduction
                     productionOn = false
                 }.start()
             }
@@ -132,28 +182,11 @@ class ControllerProduction(
     }
 
     private fun startTimerProduction() {
-        //TODO Retirer timer quand la production est trop rapide
+        //TODO Remove timer when production is too fast
         setTimerOn()
 
-        object : CountDownTimer(
-            (production.actualProductionTime * 100).toLong(), 100
-        ) {
-
-            override fun onTick(millisUntilFinished: Long) {
-                val hours = millisUntilFinished / 1000 / 3600
-                val minutes = millisUntilFinished / 1000 / 60 % 60
-                val seconds = millisUntilFinished / 1000 % 60
-                if (hours > 0) timeLeftProduction.text =
-                    context.getString(R.string.time, hours, minutes, seconds)
-                else timeLeftProduction.text =
-                    context.getString(R.string.timeNoHours, minutes, seconds)
-            }
-
-            override fun onFinish() {
-                timeLeftProduction.text = context.getString(R.string.timeNoHours, 0, 0)
-                setTimerOff()
-            }
-        }.start()
+        timer.cancel()
+        timer.start()
     }
 
     private fun setTimerOn() {
@@ -190,8 +223,6 @@ class ControllerProduction(
         if (game.money >= production.actualCost) {
             production.upgradeProduction()
         }
-        butcher = production.actualProductionTime < 1
-        refresh()
     }
 
 }

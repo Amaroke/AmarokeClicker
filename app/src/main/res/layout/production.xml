@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TODO Ajouter la bulle d'information -->
+        <!-- TODO Add the tooltip -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_alignBottom="@id/imageButtonProduction"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="@string/zero"
+                android:text="@string/possesses"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/gris9"

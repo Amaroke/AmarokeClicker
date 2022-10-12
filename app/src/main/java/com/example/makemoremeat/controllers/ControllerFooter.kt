@@ -1,15 +1,13 @@
 package com.example.makemoremeat.controllers
 
-import android.app.Activity
-import android.content.Intent
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import com.example.makemoremeat.R
-import com.example.makemoremeat.activities.ButcherActivity
+import com.example.makemoremeat.activities.GameActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class ControllerFooter(context: Activity, viewHeader: View) {
+class ControllerFooter(context: GameActivity, viewHeader: View) {
 
     private var bottomSheetBehavior: BottomSheetBehavior<View>
     private var buttonOpenSheet: ImageButton
@@ -32,11 +30,8 @@ class ControllerFooter(context: Activity, viewHeader: View) {
         buttonSheetButcher = viewHeader.findViewById(R.id.buttonSheetButcher)
         buttonSheetButcher.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-            val intent = Intent(context, ButcherActivity::class.java)
-            context.startActivity(intent)
+            context.showDialogButchers()
         }
-
-
 
     }
 }

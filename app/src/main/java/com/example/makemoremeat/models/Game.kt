@@ -2,11 +2,10 @@ package com.example.makemoremeat.models
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import com.example.makemoremeat.tools.PropertyChangeAware
-import com.example.makemoremeat.R
 import com.example.makemoremeat.enumerations.FastUP
 import com.example.makemoremeat.enumerations.ProductionInformation
 import com.example.makemoremeat.tools.DbConstants
+import com.example.makemoremeat.tools.PropertyChangeAware
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -19,10 +18,8 @@ class Game : PropertyChangeAware(){
     }
 
     var money: Double by Delegates.observable(0.0, observer)
-    var moneyPerSecond = 0
     var fastUP = FastUP.X1
     var productions: MutableList<Production> = mutableListOf()
-    private var butchers: Array<Butcher> = emptyArray()
 
     init {
         createNewProduction()
@@ -31,25 +28,8 @@ class Game : PropertyChangeAware(){
     private fun createNewProduction() {
         productions.clear()
 
-        val imgArray = intArrayOf(
-            R.drawable.chicken,
-            R.drawable.beef,
-            R.drawable.mutton,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork,
-            R.drawable.pork
-        )
-
         for (i in 0 until DbConstants.PRODUCTION_NUMBER) {
             val production = Production(
-                imgArray[i],
                 this,
                 ProductionInformation.values()[i]
             )
@@ -57,16 +37,11 @@ class Game : PropertyChangeAware(){
         }
     }
 
-    fun addButcher(butcher: Butcher) {
-        butchers.plus(butcher)
-    }
-
     fun hardReset() {
-        // TODO Améliorer le hard reset
-        money = 0.0
         for(production in productions) {
             production.reset()
         }
+        money = 0.0
     }
 
     fun backup(context: Context) {
