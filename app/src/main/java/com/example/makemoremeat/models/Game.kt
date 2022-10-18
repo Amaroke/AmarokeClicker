@@ -52,11 +52,12 @@ class Game : PropertyChangeAware(){
     }
 
     fun restore(context: Context) {
-        money = context.getSharedPreferences("game", MODE_PRIVATE).getString("money", "0")?.toDouble()
-            ?: 0.0
         for (production in productions) {
             production.restore(context)
         }
+        money =
+            context.getSharedPreferences("game", MODE_PRIVATE).getString("money", "0")?.toDouble()
+                ?: 0.0
     }
 
 }

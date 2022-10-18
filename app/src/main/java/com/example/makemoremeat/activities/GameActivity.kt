@@ -1,12 +1,8 @@
 package com.example.makemoremeat.activities
 
 import android.app.Dialog
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
@@ -18,67 +14,42 @@ import com.example.makemoremeat.models.Game
 
 class GameActivity : AppCompatActivity() {
 
+    // Model
     private var game = Game()
 
-    //Views
+    // Views
     private lateinit var viewHeader: View
     private lateinit var viewsProduction: Sequence<View>
     private lateinit var viewFooter: View
 
-    //Controllers
+    // Controllers
     private lateinit var controllerHeader: ControllerHeader
     private var controllersProduction: MutableList<ControllerProduction> = mutableListOf()
     private lateinit var controllerFooter: ControllerFooter
 
-    // TODO
-    // Chicken Butcher : Wings/Nuggets/Tenders Master
-    // Vegans Butcher : Cannibal Lecter
-    // TODO
-    // Gacha 10 levels (3* empty/bronze/silver/gold)
+    // Butchers menu
     private lateinit var dialogButchers: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        dialogButchers = Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
-        dialogButchers.setContentView(R.layout.activity_butcher)
-
-        //We remove the notification bar and the title
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.supportActionBar?.hide()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            @Suppress("DEPRECATION") window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-
         this.setContentView(R.layout.activity_main)
-
-        //We restore the game as saved in the SharedPreferences
         game.restore(this)
-
-        viewHeader = this.findViewById(R.id.header)
-        controllerHeader = ControllerHeader(game, viewHeader)
+        butcherMenuCreation()
+        createHeaderFooter()
 
         viewsProduction = this.findViewById<LinearLayout>(R.id.productionsList).children
-
+        // We associate ControllerProduction to each Production
         for ((index, value) in viewsProduction.withIndex()) {
             controllersProduction += ControllerProduction(
                 this, game, value, game.productions[index]
             )
         }
 
-        viewFooter = this.findViewById(R.id.footer)
-        controllerFooter = ControllerFooter(this, viewFooter)
-
         game.addPropertyChangeListener {
-            controllerHeader.refresh()
-            for (controller in controllersProduction) {
-                controller.refresh()
-            }
+            refresh()
+            game.backup(this)
         }
+
     }
 
     override fun onStop() {
@@ -86,8 +57,28 @@ class GameActivity : AppCompatActivity() {
         game.backup(this)
     }
 
+    private fun createHeaderFooter() {
+        viewHeader = this.findViewById(R.id.header)
+        controllerHeader = ControllerHeader(this, game, viewHeader)
+
+        viewFooter = this.findViewById(R.id.footer)
+        controllerFooter = ControllerFooter(this, viewFooter)
+    }
+
+    private fun butcherMenuCreation() {
+        dialogButchers = Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
+        dialogButchers.setContentView(R.layout.activity_butcher)
+    }
+
     fun showDialogButchers() {
         dialogButchers.show()
+    }
+
+    private fun refresh() {
+        controllerHeader.refresh()
+        for (controller in controllersProduction) {
+            controller.refresh()
+        }
     }
 
 }

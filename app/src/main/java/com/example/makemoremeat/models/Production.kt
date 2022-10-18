@@ -26,6 +26,7 @@ class Production (
             productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
                 numberPossessed - 1
             )
+        // Each 50 productions, production time is divided by 2
         if (numberPossessed % 50 == 0.0) {
             actualProductionTime /= 2
         }
@@ -40,13 +41,15 @@ class Production (
             context.getSharedPreferences(productionInformation.toString(), Context.MODE_PRIVATE)
                 .getString(
                     "numberPossessed",
-                    if (productionInformation == ProductionInformation.Chicken) "1" else "0"
-                )?.toDouble()
-                ?: if (productionInformation == ProductionInformation.Chicken) 1.0 else 0.0
+                    productionInformation.initialNumber.toString()
+                )?.toDouble() ?: productionInformation.initialNumber
         actualCost =
             productionInformation.initialCost * productionInformation.coefficientCostUp.pow(
                 numberPossessed - 1
             )
+        actualProduction = productionInformation.initialProduction * numberPossessed
+        actualProductionTime =
+            productionInformation.initialProductionTime / 2.0.pow(numberPossessed / 50)
     }
 
     fun reset() {

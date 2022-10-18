@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Colors for everywhere -->
+    <color name="transparent" tools:keep="@color/transparent">#00000000</color>
+
     <!-- Colors for timers -->
     <color name="white">#FFFFFFFF</color>
     <color name="whiteOFF">#33FFFFFF</color>
@@ -7,6 +10,7 @@
     <!-- Shades of gray -->
     <color name="gris">#212529</color>
     <color name="gris90">#E6212529</color>
+    <color name="gris1">#BB212529</color>
     <color name="gris2">#343A40</color>
     <color name="gris3">#495057</color>
     <color name="gris4">#6C757D</color>

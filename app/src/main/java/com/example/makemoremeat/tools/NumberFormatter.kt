@@ -6,7 +6,8 @@ import kotlin.math.pow
 class NumberFormatter {
 
     fun getFormattedNumber(count: Double): String {
-        if (count < 1000) return String.format("%.1f", count)
+        if (count < 10) return String.format("%.2f", count)
+        else if (count < 1000) return String.format("%.1f", count)
         val exp = (ln(count) / ln(1000.0)).toInt()
         return String.format(
             "%.2f %c",

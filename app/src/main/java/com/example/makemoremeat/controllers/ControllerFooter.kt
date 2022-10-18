@@ -9,16 +9,17 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ControllerFooter(context: GameActivity, viewHeader: View) {
 
+    private var viewFooter: View
     private var bottomSheetBehavior: BottomSheetBehavior<View>
     private var buttonOpenSheet: ImageButton
     private var buttonSheetButcher: Button
-    private var view: View
 
     init {
 
+        viewFooter = viewHeader.findViewById(R.id.bottomSheet)
         buttonOpenSheet = viewHeader.findViewById(R.id.imageButtonOpenSheet)
-        view = viewHeader.findViewById(R.id.bottomSheet)
-        bottomSheetBehavior = BottomSheetBehavior.from(view)
+        bottomSheetBehavior = BottomSheetBehavior.from(viewFooter)
+
         buttonOpenSheet.setOnClickListener {
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
