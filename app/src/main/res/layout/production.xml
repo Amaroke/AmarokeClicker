@@ -47,7 +47,16 @@
                 android:textAlignment="center"
                 android:textColor="@color/gris9"
                 android:textSize="12sp"
-                android:layout_marginBottom="3dp"/>
+                android:layout_marginBottom="3dp" />
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignTop="@id/imageButtonProduction"
+                android:layout_alignEnd="@id/imageButtonProduction"
+                android:contentDescription="@string/tooltipImage"
+                android:src="@drawable/tooltip"
+                tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
 
         <LinearLayout
@@ -105,10 +114,11 @@
                     android:id="@+id/buttonUpgradeProduction"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/gris3"
                     android:text="@string/plus1"
                     android:textAlignment="center"
                     android:textSize="11sp"
-                    android:backgroundTint="@color/gris3"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
                 <TextView

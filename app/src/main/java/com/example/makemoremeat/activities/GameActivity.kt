@@ -67,7 +67,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun butcherMenuCreation() {
         dialogButchers = Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
-        dialogButchers.setContentView(R.layout.activity_butcher)
+        dialogButchers.setContentView(R.layout.butcher)
     }
 
     fun showDialogButchers() {

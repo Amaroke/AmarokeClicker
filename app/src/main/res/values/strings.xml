@@ -25,4 +25,5 @@
     <string name="buttonTextSheetUpgrade">Upgrade</string>
     <string name="buttonTextSheetShop">Shop</string>
     <string name="menu">Menu</string>
+    <string name="tooltipImage">Tooltip with information about production</string>
 </resources>
