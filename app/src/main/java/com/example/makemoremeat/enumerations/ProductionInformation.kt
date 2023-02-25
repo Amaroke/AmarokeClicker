@@ -11,7 +11,7 @@ enum class ProductionInformation(
     val imageProduction: Int
 ) {
 
-    Chicken(1.0, 1.0, 0.1, 1000.0, 1.13, R.drawable.production_work_in_progress),
+    Chicken(1.0, 1.0, 0.1, 1000.0, 1.13, R.drawable.chicken),
     Beef(0.0, 7.0, 0.7, 2000.0, 1.14, R.drawable.production_work_in_progress),
     Mutton(0.0, 49.0, 4.9, 4000.0, 1.15, R.drawable.production_work_in_progress),
     Pork(0.0, 343.0, 34.3, 8000.0, 1.16, R.drawable.production_work_in_progress),
